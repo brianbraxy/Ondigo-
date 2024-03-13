@@ -111,7 +111,7 @@
 @endsection
 
 @push('js')
-<script src="{{ asset('public/dist/plugins/html5-validation-1.0.0/validation.min.js') }}"></script>
+<script src="{{ asset('/dist/plugins/html5-validation-1.0.0/validation.min.js') }}"></script>
 <script>
     'use strict';
     var token = $('[name="_token"]').val();
@@ -120,5 +120,5 @@
     var bankLogoPath = "{{ asset('public/uploads/files/bank_logos') }}";
     var defaultBankLogoPath = "{{ defaultImage('bank') }}";
 </script>
-<script src="{{ asset('public/user/customs/js/deposit.min.js') }}"></script>
+<script src="{{ asset('/user/customs/js/deposit.min.js') }}"></script>
 @endpush

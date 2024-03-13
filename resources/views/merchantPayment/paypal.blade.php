@@ -24,7 +24,7 @@
                         @endif
                     </div>
                     <div class="amount-logo">
-                        <img src="{{ asset('public/dist/images/gateways/payments/paypal.png') }}" class="img-fluid">
+                        <img src="{{ asset('/dist/images/gateways/payments/paypal.png') }}" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -55,5 +55,5 @@
         var amount = "{{ $totalAmount }}";
     </script>
 
-<script src="{{ asset('public/frontend/customs/js/merchant-payments/paypal.min.js') }}"></script>
+<script src="{{ asset('/frontend/customs/js/merchant-payments/paypal.min.js') }}"></script>
 @endsection

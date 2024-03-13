@@ -20,7 +20,7 @@
                     <div class="d-flex justify-content-between" id="headingOne">
                         <p class="mb-0 f-20 gilroy-Semibold text-dark">{{ __('Detailed Information') }}</p>
                         <a href="javascript:void(0)" class="d-arrow-div rotate" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        <img class="d-arrow cursor-pointer" src="{{ asset('public/user/templates/images/d-arrow.png') }}">
+                        <img class="d-arrow cursor-pointer" src="{{ asset('/user/templates/images/d-arrow.png') }}">
                         </a>
                     </div>
                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -149,7 +149,7 @@
 @endsection
 
 @push('js')
-<script src="{{ asset('public/dist/plugins/html5-validation-1.0.0/validation.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/plugins/html5-validation-1.0.0/validation.min.js') }}" type="text/javascript"></script>
 <script>
     'use strict';
     var csrfToken = $('[name="_token"]').val();
@@ -163,5 +163,5 @@
     var loadingText = "{{ __('Loading...') }}"
     var loadMoreText = "{{ __('Load More') }}"
 </script>
-<script src="{{ asset('public/user/customs/js/ticket.min.js')}}" type="text/javascript"></script>
+<script src="{{ asset('/user/customs/js/ticket.min.js')}}" type="text/javascript"></script>
 @endpush

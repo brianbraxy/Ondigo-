@@ -50,6 +50,18 @@ class RegisterController extends Controller
         return view('frontend.auth.register', $data);
     }
 
+    public function agentCreate()
+    {
+        $data = [
+            'title' => 'Register'
+        ];
+
+        if (Auth::check()) {
+            return redirect('/dashboard/agent');
+        }
+        return view('frontend.auth.agentRegister', $data);
+    }
+
     public function storePersonalInfo(Request $request)
     {
         $this->validate($request, [
@@ -165,7 +177,7 @@ class RegisterController extends Controller
                     }
 
                     // QR Code
-                    QrCode::createUserQrCode($user);
+                    // QrCode::createUserQrCode($user);
 
                     $userEmail          = $user->email;
                     $userFormattedPhone = $user->formattedPhone;

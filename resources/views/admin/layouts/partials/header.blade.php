@@ -4,7 +4,7 @@
 
     <a href="{{ route('dashboard') }}" class="logo pt-12 text-decoration-none">
         <span class="logo-mini"><b>{{ settings('name') }}</b></span>
-        <img src="{{ image(settings('logo'), 'logo') }}" width="192" height="49" class="company-logo">
+        <img src="{{ asset("uploads/logos/ondigo.svg") }}" width="192" height="49" class="company-logo">
     </a>
     </div>
 

@@ -8,7 +8,7 @@ $activeCryptoProviders = getProviderActiveStatus($providers);
 @section('title', __('Crypto Providers'))
 
 @section('head_style')
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/dist/libraries/sweetalert/sweetalert.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/dist/libraries/sweetalert/sweetalert.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('Modules/BlockIo/Resources/assets/admin/css/provider.min.css') }}">
 @endsection
 
@@ -227,7 +227,7 @@ $activeCryptoProviders = getProviderActiveStatus($providers);
 @endsection
 
 @push('extra_body_scripts')
-    <script type="text/javascript" src="{{ asset('public/dist/libraries/sweetalert/sweetalert.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/dist/libraries/sweetalert/sweetalert.min.js') }}"></script>
     <script>
         'use strict';
         var assetStatusChangeUrl = '{{ route("admin.blockio_asset.status_change") }}';

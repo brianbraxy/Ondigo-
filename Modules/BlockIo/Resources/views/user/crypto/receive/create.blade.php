@@ -42,9 +42,9 @@
 
 @push('js')
 
-<script src="{{ asset('public/dist/plugins/jquery-qrcode/jquery.qrcode.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/dist/plugins/jquery-qrcode/qrcode.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/dist/libraries/sweetalert/sweetalert-unpkg.min.js')}}" type="text/javascript"></script>
+<script src="{{ asset('/dist/plugins/jquery-qrcode/jquery.qrcode.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/plugins/jquery-qrcode/qrcode.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/libraries/sweetalert/sweetalert-unpkg.min.js')}}" type="text/javascript"></script>
 
 <script>
     var copied = "{{ __('Copied!') }}";

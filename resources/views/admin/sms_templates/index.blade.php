@@ -2,7 +2,7 @@
 @section('title', __('SMS Templates'))
 
 @section('head_style')
-    <link rel="stylesheet" href="{{ asset('public/dist/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/dist/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
 @endsection
 
 @section('page_content')
@@ -223,11 +223,11 @@
 @endsection
 
 @push('extra_body_scripts')
-    <script src="{{ asset('public/dist/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/dist/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}" type="text/javascript"></script>
     <script>
         "use strict"
         var csrfToken = $('[name="_token"]').val();
         var submitBtnText = "{{ __('Updating...') }}";
     </script>
-    <script src="{{ asset('public/admin/customs/js/verifications.min.js') }}"></script>
+    <script src="{{ asset('/admin/customs/js/verifications.min.js') }}"></script>
 @endpush

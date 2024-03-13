@@ -48,6 +48,6 @@
     var csrfToken = $('[name="_token"]').val();
     var confirmBtnText = "{{ __('Confirming...') }}";
 </script>
-<script src="{{ asset('public/user/customs/js/request-money.min.js') }}"></script>
+<script src="{{ asset('/user/customs/js/request-money.min.js') }}"></script>
 
 @endpush

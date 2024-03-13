@@ -51,5 +51,5 @@
         'use strict';
         let confirmBtnText = "{{ __('Confirming...') }}";
     </script>
-    <script src="{{ asset('public/user/customs/js/send-money.min.js') }}"></script>
+    <script src="{{ asset('/user/customs/js/send-money.min.js') }}"></script>
 @endpush

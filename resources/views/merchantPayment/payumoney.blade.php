@@ -22,7 +22,7 @@
                     <p><small>{{ __('Transaction charge : :x', ['x' => moneyFormat(optional($merchant->currency)->code, formatNumber($totalFee, optional($merchant->currency)->id))]) }}</small></p>
                 </div>
                 <div class="amount-logo">
-                    <img  src="{{ asset('public/dist/images/gateways/payments/payumoney.png') }}" alt="logo" class="img-fluid">
+                    <img  src="{{ asset('/dist/images/gateways/payments/payumoney.png') }}" alt="logo" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -59,5 +59,5 @@
         let payUMoneySubmitBtnText = "{{ __('Confirming...') }}"; 
     </script>
 
-    <script src="{{ asset('public/frontend/customs/js/merchant-payments/payumoney.min.js') }}"></script>
+    <script src="{{ asset('/frontend/customs/js/merchant-payments/payumoney.min.js') }}"></script>
 @endsection

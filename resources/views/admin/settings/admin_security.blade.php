@@ -2,7 +2,7 @@
 @section('title', __('Security Settings'))
 
 @section('head_style')
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/dist/plugins/tagify/tagify.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/dist/plugins/tagify/tagify.min.css') }}">
 @endsection
 
 @section('page_content')
@@ -68,14 +68,14 @@
 @endsection
 
 @push('extra_body_scripts')
-    <script src="{{ asset('public/dist/plugins/jquery-validation-1.17.0/dist/jquery.validate.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('public/dist/plugins/jquery-validation-1.17.0/dist/additional-methods.min.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('public/dist/plugins/tagify/tagify.min.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('public/dist/plugins/tagify/jQuery.tagify.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/dist/plugins/jquery-validation-1.17.0/dist/jquery.validate.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/dist/plugins/jquery-validation-1.17.0/dist/additional-methods.min.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('/dist/plugins/tagify/tagify.min.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('/dist/plugins/tagify/jQuery.tagify.min.js') }}" type="text/javascript"></script>
     <script type="text/javascript">
     'use strict';
     var site_url = '{{ url('/') }}';
     var submitText = '{{ __('Submitting..') }}'
     </script>
-    <script src="{{ asset('public/admin/customs/js/settings/admin_security/admin_security.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/admin/customs/js/settings/admin_security/admin_security.min.js') }}" type="text/javascript"></script>
 @endpush

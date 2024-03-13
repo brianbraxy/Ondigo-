@@ -8,7 +8,7 @@ Route::get('/clear', function () {
     return redirect('/');
 });
 
-Route::post('/webhook', 'WebhookController@index')->name('home');
+Route::post('/webhook', 'WebhookController@index');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/privacy-policy', 'HomeController@privacyPolicy')->name('privacy_policy');
 
@@ -24,8 +24,10 @@ Route::post('user-registration-check-email', 'Auth\RegisterController@checkUserR
 // Unauthenticated User
 Route::group(['middleware' => ['no_auth:users', 'locale']], function () {
     Route::get('/login', 'Auth\LoginController@index')->name("login");
+    Route::get('/login/agent', 'Auth\LoginController@agentLogin')->name("login.agent");
     Route::post('/authenticate', 'Auth\LoginController@authenticate');
     Route::get('register', 'Auth\RegisterController@create');
+    Route::get('register/agent', 'Auth\RegisterController@agentCreate');
     Route::post('register/duplicate-phone-number-check', 'Auth\RegisterController@registerDuplicatePhoneNumberCheck');
     Route::post('register/store-personal-info', 'Auth\RegisterController@storePersonalInfo')->name('register.personal.info');
     Route::post('register/store', 'Auth\RegisterController@store')->name('register.store');
@@ -49,6 +51,7 @@ Route::group(['middleware' => ['guest:users', 'locale', 'check-user-inactive'], 
 Route::group(['middleware' => ['guest:users', 'locale', 'twoFa', 'check-user-inactive'], 'namespace' => 'Users'], function () {
     Route::get('dashboard', 'CustomerController@dashboard')->name('user.dashboard');
     Route::get('wallet-list', 'CustomerController@getWallets')->name('user.wallets.index');
+    Route::get('card', 'CustomerController@getCards')->name('user.card.index');
 
     Route::get('/logout', 'CustomerController@logout')->name('user.logout');
     Route::get('check-user-status', 'CustomerController@checkUserStatus');
@@ -188,7 +191,7 @@ Route::group(['middleware' => ['guest:users', 'locale', 'twoFa', 'check-user-ina
         Route::post('amount-limit', 'MoneyTransferController@amountLimitCheck')->name('user.send_money.check_amount_limit');
         Route::post('send-money-confirm', 'MoneyTransferController@sendMoneyConfirm')->name('user.send_money.confirm');
     });
-    
+
     // merchant pay routes/web.php
 
     Route::get('/make-payment', 'PaymentController@showPaymentPage');
@@ -279,7 +282,6 @@ Route::group(['middleware' => ['guest:users', 'locale', 'twoFa', 'check-user-ina
         Route::post('ticket/change_reply_status', 'TicketController@changeReplyStatus')->name('user.tickets.change_status');
         Route::get('ticket/download/{file}', 'TicketController@download')->name('user.tickets.download');
     });
-
 });
 
 /* Merchant Payment Start*/
@@ -320,3 +322,15 @@ Route::group(['middleware' => ['guest:users']], function () {
 
 Route::get('download/package', 'ContentController@downloadPackage');
 Route::get('{url}', 'ContentController@pageDetail');
+
+Route::group(['middleware' => ['guest:users', 'locale', 'twoFa', 'agent'], 'namespace' => 'Agent'], function () {
+    Route::get('dashboard/agent', 'AgentController@dashboard')->name('agent.dashboard');
+    Route::get('agent/new/user', 'AgentController@newUser')->name('agent.new.user');
+    Route::post('agent/new/user', 'AgentController@storeUser')->name('agent.new.user');
+    Route::get('agent/new/driver/online', 'AgentController@newDriverOnline')->name('agent.new.driver.online');
+    Route::post('agent/new/driver/online', 'AgentController@storeDriverOnline')->name('agent.new.driver.online');
+    Route::get('agent/new/driver/upload', 'AgentController@newDriverUpload')->name('agent.new.driver.upload');
+    Route::post('agent/new/driver/upload', 'AgentController@newDriverUpload')->name('agent.new_driver_upload');
+    Route::post('agent/new/user/otp', 'AgentController@userOTP')->name('agent.new.user.otp');
+    Route::post('agent/new/user/otp/verify', 'AgentController@verifyUserOTP')->name('agent.new.user.otp.verify');
+});

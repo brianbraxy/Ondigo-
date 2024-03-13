@@ -21,5 +21,5 @@
     var token = $('[name="_token"]').val();
     var amount = "{!! $amount !!}";
 </script>
-<script src="{{ asset('public/user/customs/js/deposit.min.js') }}"></script>
+<script src="{{ asset('/user/customs/js/deposit.min.js') }}"></script>
 @endpush

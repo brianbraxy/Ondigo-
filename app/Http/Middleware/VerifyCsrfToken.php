@@ -31,6 +31,7 @@ class VerifyCsrfToken extends Middleware
         'invest/payumoney-payment-fail',
         'invest/payumoney-payment-success',
         'crypto-exchange/payumoney_confirm',
-        'crypto-exchange/payumoney_fail'
+        'crypto-exchange/payumoney_fail',
+        '/webhook'
     ];
 }

@@ -1,7 +1,7 @@
 @extends('user.layouts.app')
 
 @push('css')
-    <link rel="stylesheet" href="{{ asset('public/dist/plugins/daterangepicker-3.14.1/daterangepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/dist/plugins/daterangepicker-3.14.1/daterangepicker.min.css') }}">
 @endpush
 
 @section('content')
@@ -15,8 +15,8 @@
         <div class="d-flex align-items-center">
             <p class="mb-0 text-gray-100 f-16 r-f-12 gilroy-medium dark-CDO">{{ __('Filter') }}</p>
             <a class="fil-btn ml-12">
-                <img src="{{ asset('public/dist/images/filter-on.svg') }}" alt="{{ __('Filter') }}">
-                <img src="{{ asset('public/dist/images/filter-cross.svg') }}" alt="{{ __('Cross') }}" class="cross-none">
+                <img src="{{ asset('/dist/images/filter-on.svg') }}" alt="{{ __('Filter') }}">
+                <img src="{{ asset('/dist/images/filter-cross.svg') }}" alt="{{ __('Cross') }}" class="cross-none">
             </a>
         </div>
     </div>
@@ -178,7 +178,7 @@
             <div class="notfound mt-16 bg-white p-4 shadow">
                 <div class="d-flex flex-wrap justify-content-center align-items-center gap-26">
                     <div class="image-notfound">
-                        <img src="{{ asset('public/dist/images/not-found.png') }}" class="img-fluid">
+                        <img src="{{ asset('/dist/images/not-found.png') }}" class="img-fluid">
                     </div>
                     <div class="text-notfound">
                         <p class="mb-0 f-20 leading-25 gilroy-medium text-dark">{{ __('Sorry!') }} {{ __('No data found.') }}</p>
@@ -196,13 +196,13 @@
 @endsection
 
 @push('js')
-<script src="{{ asset('public/dist/plugins/daterangepicker-3.14.1/moment.min.js') }}"></script>
-<script src="{{ asset('public/dist/plugins/daterangepicker-3.14.1/daterangepicker.min.js') }}"></script>
+<script src="{{ asset('/dist/plugins/daterangepicker-3.14.1/moment.min.js') }}"></script>
+<script src="{{ asset('/dist/plugins/daterangepicker-3.14.1/daterangepicker.min.js') }}"></script>
 <script>
     'use strict';
     let dateRangePickerText = '{{ __("Pick a date range") }}';
     var startDate = "{!! $from !!}";
     var endDate = "{!! $to !!}";
 </script>
-<script src="{{ asset('public/user/customs/js/merchant.min.js')}}" type="text/javascript"></script>
+<script src="{{ asset('/user/customs/js/merchant.min.js')}}" type="text/javascript"></script>
 @endpush

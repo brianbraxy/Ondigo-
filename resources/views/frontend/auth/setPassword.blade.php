@@ -11,7 +11,7 @@
                             <div class="d-flex justify-content-start"> 
                                 <div class="logo-div">
                                     <a href="{{ url('/') }}">
-                                        <img src="{{ image(settings('logo'), 'logo') }}" alt="{{ __('Brand Logo') }}">
+                                        <img src="{{ asset("uploads/logos/ondigo.svg") }}" alt="{{ __('Brand Logo') }}">
                                     </a>
                                 </div>
                             </div> 
@@ -24,7 +24,7 @@
                             </div>
                             <div class="transaction-image">
                                 <div class="static-image">
-                                    <img class="img img-fluid" src="{{ asset('public/frontend/templates/images/login/signin-static.svg') }}">
+                                    <img class="img img-fluid" src="{{ asset('/frontend/templates/images/login/signin-static.svg') }}">
                                 </div>
                             </div>
                         </div>
@@ -89,13 +89,13 @@
     <!-- Login section end -->
 @endsection
 @section('js')
-<script src="{{ asset('public/dist/plugins/html5-validation-1.0.0/validation.min.js') }}"></script>
+<script src="{{ asset('/dist/plugins/html5-validation-1.0.0/validation.min.js') }}"></script>
 
 <script>
     'use strict';
     let resetButtonText= "{{ __('Submitting....') }}";
 </script>
-<script src="{{ asset('public/frontend/customs/js/reset/reset.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/frontend/customs/js/reset/reset.min.js') }}" type="text/javascript"></script>
 
 @endsection
 

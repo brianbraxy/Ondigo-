@@ -82,11 +82,11 @@
 @endsection
 
 @push('js')
-<script src="{{ asset('public/dist/plugins/html5-validation-1.0.0/validation.min.js') }}"></script>
+<script src="{{ asset('/dist/plugins/html5-validation-1.0.0/validation.min.js') }}"></script>
 <script>
     'use strict';
     var csrfToken = $('[name="_token"]').val();
     var submitButtonText = "{{ __('Submitting...') }}";
 </script>
-<script src="{{ asset('public/user/customs/js/settings.min.js') }}"></script>
+<script src="{{ asset('/user/customs/js/settings.min.js') }}"></script>
 @endpush

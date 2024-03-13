@@ -184,9 +184,9 @@ class CustomerController extends Controller
         $data['user'] = User::where(['id' => Auth::user()->id])->first();
         $data['qrCode'] = QrCode::getQrCode(auth()->id(), 'user', ['qr_image']);
 
-//         $transactions = (new SafeHavenApiService)->get_transactions($data['user']->bank()->first()->account_id, "0", "10");
-//         $data["transactions"] = $transactions;
-// dd($transactions);
+        //         $transactions = (new SafeHavenApiService)->get_transactions($data['user']->bank()->first()->account_id, "0", "10");
+        //         $data["transactions"] = $transactions;
+        // dd($transactions);
         return view('user.dashboard', $data);
     }
 
@@ -1161,5 +1161,10 @@ class CustomerController extends Controller
         }
 
         return response()->download($filePath);
+    }
+
+    public function getCards()
+    {
+        return view("user.card.index");
     }
 }

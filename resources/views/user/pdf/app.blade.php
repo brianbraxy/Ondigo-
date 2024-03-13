@@ -20,7 +20,7 @@
                         <tr>
                             <td class="logo-container">
                                 <a href="{{ url('/') }}">
-                                    <img src="{{ image(settings('logo'), 'logo') }}" alt="logo" border="0">
+                                    <img src="{{ asset("uploads/logos/ondigo.svg") }}" alt="logo" border="0">
                                 </a>
                             </td>
                         </tr>

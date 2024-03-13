@@ -26,7 +26,7 @@
                         <p class="mb-0 text-primary f-16 leading-23 gilroy-medium text-center">{{ __('Being A') }}</p>
                         <p class="mb-0 text-dark f-24 leading-30 gilroy-Semibold mt-3p text-center">{{ __('Merchant') }}</p>
                         <div class="mt-32 text-center carosel-image">
-                            <img src="{{ asset('public/user/templates/images/carosel-image.png') }}">
+                            <img src="{{ asset('/user/templates/images/carosel-image.png') }}">
                         </div>
                         <p class="mb-0 f-15 leading-25 gilroy-medium text-gray-100 text-center mt-32 carosel-text-dimension">{{ __('Merchant account will allow your business to accept payments from your customers.') }}</p>
                     </div>
@@ -34,7 +34,7 @@
                         <p class="mb-0 text-primary f-16 leading-23 gilroy-medium text-center">{{ __('Being A') }}</p>
                         <p class="mb-0 text-dark f-24 leading-30 gilroy-Semibold mt-3p text-center">{{ __('Merchant') }}</p>
                         <div class="mt-32 text-center carosel-image">
-                            <img src="{{ asset('public/user/templates/images/carosel-image-2.png') }}">
+                            <img src="{{ asset('/user/templates/images/carosel-image-2.png') }}">
                         </div>
                         <p class="mb-0 f-15 leading-25 gilroy-medium text-gray-100 text-center mt-32 carosel-text-dimension">{{ __('Once a merchant is approved by the administrator, the merchant account will be ready to accept payments.') }}</p>
                     </div>
@@ -42,7 +42,7 @@
                         <p class="mb-0 text-primary f-16 leading-23 gilroy-medium text-center">{{ __('Being A') }}</p>
                         <p class="mb-0 text-dark f-24 leading-30 gilroy-Semibold mt-3p text-center">{{ __('Merchant') }}</p>
                         <div class="mt-32 text-center carosel-image">
-                            <img src="{{ asset('public/user/templates/images/carosel-image-3.png') }}">
+                            <img src="{{ asset('/user/templates/images/carosel-image-3.png') }}">
                         </div>
                         <p class="mb-0 f-15 leading-25 gilroy-medium text-gray-100 text-center mt-32 carosel-text-dimension">{{ __('Money added to your wallets when customer pays for product or service. You can create both standard and Express merchants with proper information.') }}</p>
                     </div>
@@ -174,7 +174,7 @@
 @endsection
 
 @push('js')
-    <script src="{{ asset('public/dist/plugins/html5-validation-1.0.0/validation.min.js') }}"></script>
+    <script src="{{ asset('/dist/plugins/html5-validation-1.0.0/validation.min.js') }}"></script>
     <script type="text/javascript">
         'use strict';
         var csrfToken = $('[name="_token"]').val();
@@ -185,5 +185,5 @@
         var submitButtonText = "{{ __('Processing...') }}";
     </script>
 
-    <script src="{{ asset('public/user/customs/js/merchant.min.js') }}"></script>
+    <script src="{{ asset('/user/customs/js/merchant.min.js') }}"></script>
 @endpush

@@ -76,8 +76,8 @@
 @endsection
 
 @push('js')
-    <script src="{{ asset('public/dist/plugins/html5-validation-1.0.0/validation.min.js') }}"></script>
-    <script src="{{ asset('public/dist/plugins/debounce-1.1/jquery.ba-throttle-debounce.min.js') }}"></script>
+    <script src="{{ asset('/dist/plugins/html5-validation-1.0.0/validation.min.js') }}"></script>
+    <script src="{{ asset('/dist/plugins/debounce-1.1/jquery.ba-throttle-debounce.min.js') }}"></script>
     <script type="text/javascript">
         'use strict';
         var token = $('[name="_token"]').val();
@@ -89,5 +89,5 @@
         var paymentIntendId = null;
         var paymentMethodId = null;
     </script>
-    <script src="{{ asset('public/user/customs/js/deposit.min.js') }}"></script>
+    <script src="{{ asset('/user/customs/js/deposit.min.js') }}"></script>
 @endpush

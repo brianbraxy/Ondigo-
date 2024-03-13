@@ -64,11 +64,11 @@
 @endsection
 
 @push('js')
-<script src="{{ asset('public/dist/plugins/html5-validation-1.0.0/validation.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/plugins/html5-validation-1.0.0/validation.min.js') }}" type="text/javascript"></script>
 <script>
     'use strict';
     var csrfToken = $('[name="_token"]').val();
     var submitButtonText = "{{ __('Submitting...') }}";
 </script>
-<script src="{{ asset('public/user/customs/js/ticket.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/user/customs/js/ticket.min.js') }}" type="text/javascript"></script>
 @endpush

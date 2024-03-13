@@ -75,5 +75,5 @@
     'use strict';
     var submitButtonText = "{{ __('Submitting...') }}";
 </script>
-<script src="{{ asset('public/user/customs/js/withdrawal.min.js') }}"></script>
+<script src="{{ asset('/user/customs/js/withdrawal.min.js') }}"></script>
 @endpush

@@ -508,7 +508,7 @@ $breadcrumb = [
 
 @push('extra_body_scripts')
 
-<script src="{{ asset('public/dist/libraries/chartjs/Chart.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/libraries/chartjs/Chart.min.js') }}" type="text/javascript"></script>
 
 <script>
 

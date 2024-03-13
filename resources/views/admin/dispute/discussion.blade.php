@@ -205,8 +205,8 @@
 
 @push('extra_body_scripts')
 
-<script src="{{ asset('public/dist/plugins/jquery-validation-1.17.0/dist/jquery.validate.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/dist/plugins/jquery-validation-1.17.0/dist/additional-methods.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/plugins/jquery-validation-1.17.0/dist/jquery.validate.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/plugins/jquery-validation-1.17.0/dist/additional-methods.min.js') }}" type="text/javascript"></script>
 <script type="text/javascript">
 	'use strict';
 	var extensions = JSON.parse(@json($extensions));
@@ -217,5 +217,5 @@
 	var submittingText = '{{ __("Submitting...") }}';
 	var statusChangeText = '{{ __("Dispute discussion :x successfully done.") }}'
 </script>
-<script src="{{ asset('public/admin/customs/js/dispute/dispute.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/admin/customs/js/dispute/dispute.min.js') }}" type="text/javascript"></script>
 @endpush

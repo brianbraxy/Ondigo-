@@ -48,5 +48,5 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{ asset('public/dist/plugins/html5-validation-1.0.0/validation.min.js') }}"></script>
+    <script src="{{ asset('/dist/plugins/html5-validation-1.0.0/validation.min.js') }}"></script>
 @endsection

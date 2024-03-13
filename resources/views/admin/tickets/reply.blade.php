@@ -5,7 +5,7 @@
 @extends('admin.layouts.master')
 @section('title', __('Ticket Reply'))
 @section('head_style')
-  <link rel="stylesheet" type="text/css" href="{{  asset('public/dist/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{  asset('/dist/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
 @endsection
 
 @section('page_content')
@@ -270,9 +270,9 @@
 @endsection
 
 @push('extra_body_scripts')
-<script src="{{ asset('public/dist/plugins/jquery-validation-1.17.0/dist/jquery.validate.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/dist/plugins/jquery-validation-1.17.0/dist/additional-methods.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/dist/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/plugins/jquery-validation-1.17.0/dist/jquery.validate.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/plugins/jquery-validation-1.17.0/dist/additional-methods.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}" type="text/javascript"></script>
 
 <script type="text/javascript">
     'use strict';
@@ -284,7 +284,7 @@
     var fileErrorMessage = errorMessage.replace(':x', extensionsMessage);
     var ticketStatusChangeUrl = "{{ url(config('adminPrefix').'/tickets/change_ticket_status') }}";
 </script>
-<script src="{{ asset('public/admin/customs/js/ticket/ticket.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/admin/customs/js/ticket/ticket.min.js') }}" type="text/javascript"></script>
 
 @endpush
 

@@ -69,8 +69,8 @@
 @endsection
 
 @push('extra_body_scripts')
-<script src="{{ asset('public/dist/plugins/jquery-validation-1.17.0/dist/jquery.validate.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/dist/plugins/jquery-validation-1.17.0/dist/additional-methods.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/plugins/jquery-validation-1.17.0/dist/jquery.validate.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/plugins/jquery-validation-1.17.0/dist/additional-methods.min.js') }}" type="text/javascript"></script>
 @include('common.read-file-on-change')
 
 <script type="text/javascript">
@@ -82,6 +82,6 @@
 	let extensionsValidationMessage = errorMessage.replace(':x', extensionsValidation);
     let defaultImageSource = '{{ url("public/uploads/userPic/default-image.png") }}';
 </script>
-<script src="{{ asset('public/admin/customs/js/admin_profile/admin_profile.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/admin/customs/js/admin_profile/admin_profile.min.js') }}" type="text/javascript"></script>
 @endpush
 

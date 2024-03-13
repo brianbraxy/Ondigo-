@@ -17,7 +17,7 @@ class SettingsTableSeeder extends Seeder
         Setting::truncate();
 
         Setting::insert([
-            ['name' => 'name', 'value' => 'Pay Money', 'type' => 'general'],
+            ['name' => 'name', 'value' => 'Ondigo', 'type' => 'general'],
             ['name' => 'logo', 'value' => '1532175849_logo.png', 'type' => 'general'],
             ['name' => 'favicon', 'value' => '1530689937_favicon.png', 'type' => 'general'],
             ['name' => 'head_code', 'value' => '', 'type' => 'general'],

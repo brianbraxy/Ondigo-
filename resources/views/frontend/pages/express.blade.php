@@ -5,7 +5,7 @@
 @extends('frontend.layouts.app')
 
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('public/frontend/templates/css/prism.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/frontend/templates/css/prism.min.css') }}">
 @endsection
 
 @section('content')
@@ -23,7 +23,7 @@
                     <button class="btn btn-dark btn-lg">{{ __('Developer') }}</button>
                 </div>
                 <div class="merchant-text">
-                    <p>{{ __('With Pay Money Standard and Express, you can easily and safely receive online payments from your customer.') }}</p>
+                    <p>{{ __('With Ondigo Standard and Express, you can easily and safely receive online payments from your customer.') }}</p>
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
                     <h3>{{ $companyName }} {{ __('Express Payment Gateway Documentation.') }}</h3>
                 </div>
             <span>{{ __('Payer') }}</span>
-                <p>{{ __('If payer wants to fund payments using Pay Money, set payer to Pay Money.(Other payment method ex: paypal, stripe, coin payments etc not available yet).') }}</p>
+                <p>{{ __('If payer wants to fund payments using Ondigo, set payer to Ondigo.(Other payment method ex: paypal, stripe, coin payments etc not available yet).') }}</p>
             </div>
             <div class="language-container">
                 <div class="snippet">
@@ -204,5 +204,5 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('public/frontend/templates/js/prism.min.js') }}"></script>
+    <script src="{{ asset('/frontend/templates/js/prism.min.js') }}"></script>
 @endsection

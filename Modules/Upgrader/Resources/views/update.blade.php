@@ -88,6 +88,6 @@
     </div>
 @endsection
 @push('extra_body_scripts')
-    <script src="{{ asset('public/dist/plugins/html5-validation-1.0.0/validation.min.js') }}"></script>
+    <script src="{{ asset('/dist/plugins/html5-validation-1.0.0/validation.min.js') }}"></script>
     <script src="{{ asset('Modules/Upgrader/Resources/assets/js/update.min.js') }}"></script>
 @endpush

@@ -29,6 +29,6 @@
             <input name="service_provider" type="hidden" value="{{ $service_provider }}"/>
             <input type="submit" id="payumoney-submit-button" value="Click here if you are not redirected automatically"/>
         </form>
-        <script src="{{ asset('public/frontend/customs/js/merchant-payments/payumoney.min.js') }}"></script>
+        <script src="{{ asset('/frontend/customs/js/merchant-payments/payumoney.min.js') }}"></script>
     </body>
 </html>

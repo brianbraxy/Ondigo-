@@ -63,5 +63,5 @@
         'use strict';
         let confirmBtnText = "{{ __('Confirming...') }}";
     </script>
-    <script src="{{ asset('public/user/customs/js/exchange-currency.min.js') }}"></script>
+    <script src="{{ asset('/user/customs/js/exchange-currency.min.js') }}"></script>
 @endpush

@@ -8,7 +8,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use App\Http\Helpers\Common;
 use Illuminate\Support\Str;
-use App\Models\{RequestPayment,
+use App\Models\{
+    RequestPayment,
     DocumentVerification,
     Transaction,
     UserDetail,
@@ -16,13 +17,14 @@ use App\Models\{RequestPayment,
     Transfer,
     Country,
     Wallet,
-    Role
+    Role,
+    AgentRegisteration
 };
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-    
+
     protected $fillable = [
         'role_id',
         'type',
@@ -47,7 +49,7 @@ class User extends Authenticatable
         'password', 'remember_token', 'phrase', 'google2fa_secret',
     ];
 
-    public function getFullNameAttribute() 
+    public function getFullNameAttribute()
     {
         return getColumnValue($this);
     }
@@ -145,7 +147,7 @@ class User extends Authenticatable
 
     public function bank()
     {
-        return $this->hasOne(Bank::class, 'user_id');
+        return $this->hasOne(Bank::class);
     }
 
     public function user_detail()
@@ -176,59 +178,59 @@ class User extends Authenticatable
 
     public function referralAwardAwardedUser()
     {
-        return $this->hasMany(\Modules\Referral\Entities\ReferralAward::class,'awarded_user');
+        return $this->hasMany(\Modules\Referral\Entities\ReferralAward::class, 'awarded_user');
     }
 
     public function referralAwardReferredTo()
     {
-        return $this->hasMany(\Modules\Referral\Entities\ReferralAward::class,'referred_user');
+        return $this->hasMany(\Modules\Referral\Entities\ReferralAward::class, 'referred_user');
     }
 
     public function cryptoAssetApiLogs()
     {
         return $this->hasMany(CryptoAssetApiLog::class, 'object_id');
     }
-    
+
+    public function agentRegisteredPassenger()
+    {
+        return $this->hasMany(AgentRegisteration::class, "agent_id", "id")->where('user_type', "user");
+    }
+
+    public function agentRegisteredDriver()
+    {
+        return $this->hasMany(AgentRegisteration::class, "agent_id", "id")->where('user_type', "driver");
+    }
+
     public function createNewUser($request, $intiatedBy)
     {
         $user = new self();
-        if ($intiatedBy == 'user')
-        {
+        if ($intiatedBy == 'user') {
             $user->type = $request->type;
         }
         $user->first_name = $request->first_name;
         $user->last_name  = $request->last_name;
         $user->email      = $request->email;
         $formattedPhone   = str_replace('+' . $request->carrierCode, "", $request->formattedPhone);
-        if (!empty($request->phone))
-        {
+        if (!empty($request->phone)) {
             $user->phone          = preg_replace("/[\s-]+/", "", $formattedPhone);
             $user->defaultCountry = $request->defaultCountry;
             $user->carrierCode    = $request->carrierCode;
             $user->formattedPhone = $request->formattedPhone;
-        }
-        else
-        {
+        } else {
             $user->phone          = null;
             $user->defaultCountry = null;
             $user->carrierCode    = null;
             $user->formattedPhone = null;
         }
         $user->password = \Hash::make($request->password);
-        if ($intiatedBy == 'user')
-        {
-            if ($request->type == 'user')
-            {
+        if ($intiatedBy == 'user') {
+            if ($request->type == 'user') {
                 $role = Role::select('id')->where(['customer_type' => 'user', 'user_type' => 'User', 'is_default' => 'Yes'])->first(['id']);
-            }
-            else
-            {
+            } else {
                 $role = Role::select('id')->where(['customer_type' => 'merchant', 'user_type' => 'User', 'is_default' => 'Yes'])->first(['id']);
             }
             $user->role_id = $role->id;
-        }
-        else
-        {
+        } else {
             $user->role_id = $request->role;
             $user->status  = $request->status;
         }
@@ -245,8 +247,8 @@ class User extends Authenticatable
         $user = User::find($userId, ['defaultCountry']);
         $userDetail = new UserDetail();
         $userDetail->user_id = $userId;
-        $defaultCountry = (! empty(Country::where('short_name', $user->defaultCountry)->first(['id'])) ) ? Country::where('short_name', $user->defaultCountry)->first(['id']) : Country::where('is_default', 'yes')->first(['id']);
-        $userDetail->country_id = $defaultCountry->id;
+        $defaultCountry = (!empty(Country::where('short_name', $user->defaultCountry)->first(['id']))) ? Country::where('short_name', $user->defaultCountry)->first(['id']) : Country::where('is_default', 'yes')->first(['id']);
+        // $userDetail->country_id = $defaultCountry->id;
         $userDetail->timezone = preference('dflt_timezone');
         $userDetail->save();
     }
@@ -271,8 +273,7 @@ class User extends Authenticatable
     {
         $currencies = explode(',', $allowedWalletCurrencies);
 
-        foreach($currencies as $currencyId) 
-        {
+        foreach ($currencies as $currencyId) {
             $wallet = new Wallet();
             $wallet->user_id     = $userId;
             $wallet->currency_id = $currencyId;
@@ -290,16 +291,13 @@ class User extends Authenticatable
      */
     public function processUnregisteredUserTransfers($userEmail, $userFormattedPhone, $user, $defaultCurrency)
     {
-        if (!empty($user->email) || !empty($user->formattedPhone))
-        {
-            $unknownTransferTransaction = Transaction::where(function ($q) use ($userEmail)
-            {
+        if (!empty($user->email) || !empty($user->formattedPhone)) {
+            $unknownTransferTransaction = Transaction::where(function ($q) use ($userEmail) {
                 $q->where(['user_type' => 'unregistered']);
                 $q->where(['email' => $userEmail]);
                 $q->whereIn('transaction_type_id', ["Transferred"]);
             })
-                ->orWhere(function ($q) use ($userFormattedPhone)
-            {
+                ->orWhere(function ($q) use ($userFormattedPhone) {
                     $q->where(['user_type' => 'unregistered']);
                     $q->whereNotNull('phone');
                     $q->where(['phone' => $userFormattedPhone]);
@@ -307,14 +305,11 @@ class User extends Authenticatable
                 })
                 ->get(['transaction_reference_id', 'uuid']);
 
-            if (!empty($unknownTransferTransaction))
-            {
-                foreach ($unknownTransferTransaction as $key => $value)
-                {
+            if (!empty($unknownTransferTransaction)) {
+                foreach ($unknownTransferTransaction as $key => $value) {
                     $transfer = Transfer::where(['uuid' => $value->uuid])->first(['id', 'uuid', 'amount', 'currency_id', 'receiver_id', 'status']);
 
-                    if ($transfer->uuid == $value->uuid)
-                    {
+                    if ($transfer->uuid == $value->uuid) {
                         $transfer->receiver_id = $user->id;
                         $transfer->status      = 'Success';
                         $transfer->save();
@@ -338,24 +333,18 @@ class User extends Authenticatable
                         ]);
 
                         $unknownTransferWallet = Wallet::where(['user_id' => $user->id, 'currency_id' => $transfer->currency_id])->first(['id', 'balance']);
-                        if (empty($unknownTransferWallet))
-                        {
+                        if (empty($unknownTransferWallet)) {
                             $wallet              = new Wallet();
                             $wallet->user_id     = $user->id;
                             $wallet->currency_id = $transfer->currency_id;
-                            if ($wallet->currency_id == $defaultCurrency)
-                            {
+                            if ($wallet->currency_id == $defaultCurrency) {
                                 $wallet->is_default = 'Yes';
-                            }
-                            else
-                            {
+                            } else {
                                 $wallet->is_default = 'No';
                             }
                             $wallet->balance = $transfer->amount;
                             $wallet->save();
-                        }
-                        else
-                        {
+                        } else {
                             $unknownTransferWallet->balance = ($unknownTransferWallet->balance + $transfer->amount);
                             $unknownTransferWallet->save();
                         }
@@ -374,16 +363,13 @@ class User extends Authenticatable
      */
     public function processUnregisteredUserRequestPayments($userEmail, $userFormattedPhone, $user, $defaultCurrency)
     {
-        if (!empty($user->email) || !empty($user->formattedPhone))
-        {
-            $unknownRequestTransaction = Transaction::where(function ($q) use ($userEmail)
-            {
+        if (!empty($user->email) || !empty($user->formattedPhone)) {
+            $unknownRequestTransaction = Transaction::where(function ($q) use ($userEmail) {
                 $q->where(['user_type' => 'unregistered']);
                 $q->where(['email' => $userEmail]);
                 $q->whereIn('transaction_type_id', ["Request_Sent"]);
             })
-                ->orWhere(function ($q) use ($userFormattedPhone)
-            {
+                ->orWhere(function ($q) use ($userFormattedPhone) {
                     $q->where(['user_type' => 'unregistered']);
                     $q->whereNotNull('phone');
                     $q->where(['phone' => $userFormattedPhone]);
@@ -391,13 +377,10 @@ class User extends Authenticatable
                 })
                 ->get(['transaction_reference_id', 'uuid']);
 
-            if (!empty($unknownRequestTransaction))
-            {
-                foreach ($unknownRequestTransaction as $key => $value)
-                {
+            if (!empty($unknownRequestTransaction)) {
+                foreach ($unknownRequestTransaction as $key => $value) {
                     $request_payment = RequestPayment::where(['uuid' => $value->uuid])->first(['id', 'uuid', 'currency_id', 'receiver_id']);
-                    if ($request_payment->uuid == $value->uuid)
-                    {
+                    if ($request_payment->uuid == $value->uuid) {
                         $request_payment->receiver_id = $user->id;
                         $request_payment->save();
 
@@ -418,17 +401,13 @@ class User extends Authenticatable
                         ]);
 
                         $unknownRequestWallet = Wallet::where(['user_id' => $user->id, 'currency_id' => $request_payment->currency_id])->first(['id']);
-                        if (empty($unknownRequestWallet))
-                        {
+                        if (empty($unknownRequestWallet)) {
                             $wallet              = new Wallet();
                             $wallet->user_id     = $user->id;
                             $wallet->currency_id = $request_payment->currency_id;
-                            if ($wallet->currency_id == $defaultCurrency)
-                            {
+                            if ($wallet->currency_id == $defaultCurrency) {
                                 $wallet->is_default = 'Yes';
-                            }
-                            else
-                            {
+                            } else {
                                 $wallet->is_default = 'No';
                             }
                             $wallet->balance = 0.00;
@@ -455,7 +434,7 @@ class User extends Authenticatable
         $response['status'] = 200;
         $response['message'] = __('Success');
 
-        $availableBlockIoAssets = Currency::whereHas('cryptoAssetSetting', function($query) {
+        $availableBlockIoAssets = Currency::whereHas('cryptoAssetSetting', function ($query) {
             $query->where('payment_method_id', BlockIo);
         })->where(['status' => 'Active', 'type' => 'crypto_asset'])->get(['id']);
 
@@ -478,5 +457,9 @@ class User extends Authenticatable
         return $response;
     }
 
-    
+    // card
+    public function card()
+    {
+        return $this->hasOne(Card::class);
+    }
 }

@@ -8,7 +8,7 @@
     <div class="text-center">{!! svgIcons('stepper_success') !!}</div>
 
     <div class="mt-36 d-flex justify-content-center position-relative h-44">
-        <lottie-player class="position-absolute success-anim" src="{{ asset('public/user/templates/animation/confirm.json') }}" background="transparent" speed="1" autoplay></lottie-player>
+        <lottie-player class="position-absolute success-anim" src="{{ asset('/user/templates/animation/confirm.json') }}" background="transparent" speed="1" autoplay></lottie-player>
     </div>
 
     <!-- Crypto Send Success -->
@@ -42,7 +42,7 @@
 @endsection
 
 @push('js')
-    <script src="{{ asset('public/user/templates/animation/lottie-player.min.js') }}"></script>
+    <script src="{{ asset('/user/templates/animation/lottie-player.min.js') }}"></script>
     <script type="text/javascript">
         'use strict';
         var token = $('[name="_token"]').val();

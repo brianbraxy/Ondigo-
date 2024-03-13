@@ -131,7 +131,7 @@ if (!function_exists('logoPath')) {
     {
         return !empty(settings('logo')) && file_exists(public_path('uploads/logos/' . settings('logo')))
             ? asset('public/uploads/logos/' . settings('logo'))
-            : asset('public/dist/images/default-logo.png');
+            : asset('/dist/images/default-logo.png');
     }
 }
 
@@ -184,33 +184,33 @@ if (!function_exists('defaultImage')) {
     function defaultImage(?string $type): string
     {
         $defaultImages = [
-            'logo' => 'public/dist/images/default-logo.png',
-            'favicon' => 'public/dist/images/default-favicon.png',
-            'profile' => 'public/dist/images/default-avatar.png',
-            'merchant' => 'public/dist/images/default-merchant.png',
-            'currency' => 'public/dist/images/default-currency.png',
-            'crypto' => 'public/dist/images/gateways/crypto.png',
-            'bank' => 'public/dist/images/bank.png',
-            'stripe' => 'public/dist/images/gateways/stripe.png',
-            'mts' => 'public/dist/images/gateways/mts.png',
-            'paypal' => 'public/dist/images/gateways/paypal.png',
-            'bank' => 'public/dist/images/gateways/bank.png',
-            'payumoney' => 'public/dist/images/payumoney.png',
-            'payeer' => 'public/dist/images/payeer.png',
-            'coinpayments' => 'public/dist/images/gateways/coinpayments.png',
-            'coinpayments_ipn' => 'public/dist/images/coinpayments_ipn.png',
-            'language_flag' => 'public/dist/images/default-flag.png',
-            'error' => 'public/dist/images/alert/error.png',
-            'warning' => 'public/dist/images/alert/warning.png',
-            'success' => 'public/dist/images/alert/checked.png',
-            'fail' => 'public/dist/images/failed.svg',
-            'loader' => 'public/dist/images/loader.gif',
-            'notfound' => 'public/dist/images/not-found.png',
+            'logo' => '/dist/images/default-logo.png',
+            'favicon' => '/dist/images/default-favicon.png',
+            'profile' => '/dist/images/default-avatar.png',
+            'merchant' => '/dist/images/default-merchant.png',
+            'currency' => '/dist/images/default-currency.png',
+            'crypto' => '/dist/images/gateways/crypto.png',
+            'bank' => '/dist/images/bank.png',
+            'stripe' => '/dist/images/gateways/stripe.png',
+            'mts' => '/dist/images/gateways/mts.png',
+            'paypal' => '/dist/images/gateways/paypal.png',
+            'bank' => '/dist/images/gateways/bank.png',
+            'payumoney' => '/dist/images/payumoney.png',
+            'payeer' => '/dist/images/payeer.png',
+            'coinpayments' => '/dist/images/gateways/coinpayments.png',
+            'coinpayments_ipn' => '/dist/images/coinpayments_ipn.png',
+            'language_flag' => '/dist/images/default-flag.png',
+            'error' => '/dist/images/alert/error.png',
+            'warning' => '/dist/images/alert/warning.png',
+            'success' => '/dist/images/alert/checked.png',
+            'fail' => '/dist/images/failed.svg',
+            'loader' => '/dist/images/loader.gif',
+            'notfound' => '/dist/images/not-found.png',
             'referral_award' => 'Modules/Referral/Resources/assets/referral.png',
             'investment' => 'Modules/Investment/Resources/assets/investment.png'
         ];
  
-        return array_key_exists(strtolower($type), $defaultImages) ? asset($defaultImages[strtolower($type)]) : asset('public/dist/images/default-img.png');
+        return array_key_exists(strtolower($type), $defaultImages) ? asset($defaultImages[strtolower($type)]) : asset('/dist/images/default-img.png');
     }
 }
 

@@ -4,7 +4,7 @@
     <div class="card darken-1">
         <div class="card-content black-text">
             <div class="center-align">
-                <p class="card-title">{{ __('Pay Money') }}</p>
+                <p class="card-title">{{ __('Ondigo') }}</p>
                 <p><em>{{ env('APP_VERSION') }}</em></p>
                 <hr>
                 <p class="card-title">{{ __('Welcome to the Installer !') }}</p>

@@ -3,7 +3,7 @@
 
 @section('head_style')
     <!-- custom-checkbox -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/admin/customs/css/custom-checkbox.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/admin/customs/css/custom-checkbox.min.css') }}">
 @endsection
 
 @section('page_content')
@@ -249,7 +249,7 @@
 @include('common.restrict_number_to_pref_decimal')
 @include('common.restrict_character_decimal_point')
 
-    <script src="{{ asset('public/dist/plugins/jquery-validation-1.17.0/dist/jquery.validate.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/dist/plugins/jquery-validation-1.17.0/dist/jquery.validate.min.js') }}" type="text/javascript"></script>
 
     <script type="text/javascript">
 

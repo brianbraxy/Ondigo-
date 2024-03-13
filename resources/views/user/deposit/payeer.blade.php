@@ -11,7 +11,7 @@
 	<input type="hidden" name="m_cipher_method" value="AES-256-CBC">
 	<input type="submit" name="m_process" id="payeer-submit-button" value="{{ __('Click here if you are not redirected automatically') }}" />
 </form>
-<script src="{{ asset('public/dist/libraries/jquery-3.6.1/jquery-3.6.1.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/libraries/jquery-3.6.1/jquery-3.6.1.min.js') }}" type="text/javascript"></script>
 <script type="text/javascript">
     'use strict';
     $('#payeer-submit-button').trigger('click');

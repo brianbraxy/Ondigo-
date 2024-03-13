@@ -2,42 +2,72 @@
 <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column" id="sidebar">
     <div class="bg-white shadow vh-100 position-fixed d-flex flex-column w-inherit drop-parent">
         <div>
-            <a href="{{ url('/') }}"><img class="ml-40 mt-20 pay-logo img-fluid" src="{{ image(settings('logo'), 'logo') }}" alt="{{ settings('name') }}"></a>
+            <a href="{{ url('/') }}"><img class="ml-40 mt-20 pay-logo img-fluid"
+                    src="{{ asset('uploads/logos/ondigo.svg') }}" alt="{{ settings('name') }}"></a>
         </div>
-        <div class="flex-grow-1 px-4 px-res mt-43 bg-white position-relative overflow-auto hide-thin-scrollbar thin-scrollbar">
+        <div class="flex-grow-1 px-4 px-res mt-43 bg-white position-relative overflow-auto hide-thin-scrollbar thin-scrollbar"
+            style="flex-grow: 4 !important">
             <ul class="list-unstyled ps-0 accordion accordion-flush position-absolute w-268" id="accordion-menu">
 
                 <!-- Dashboard -->
                 <li>
-                    <a href="{{ route('user.dashboard') }}" class="mb-1 d-flex align-items-center list-option h-46 mt-7 {{ request()->route()->named('user.dashboard') ? 'text-white bg-info' : 'text-info-100' }}">
-                        <span class="ms-3 mr-20">{!! menuSvgIcon('user.dashboard') !!}</span>
-                        <span>{{ __('Dashboard') }}</span>
+                    <a href="{{ route('user.dashboard') }}"
+                        class="mb-1 d-flex align-items-center list-option h-46 mt-7 {{ request()->route()->named('user.dashboard') ? 'text-dark bg-warning' : 'text-info-100' }}">
+                        <span class="ms-3 mr-20"><i class="fa-solid fa-house"></i></span>
+                        <span class=" f-16 text-dark">{{ __('Dashboard') }}</span>
                     </a>
                 </li>
 
-                 <!-- Transactions -->
-                 <li>
-                    <a href="{{ route('user.transactions.index') }}" class="mb-1 d-flex align-items-center list-option h-46 mt-7 {{ request()->route()->named('user.transactions.*') ? 'text-white bg-info' : 'text-info-100' }}">
-                        <span class="ms-3 mr-20">{!! menuSvgIcon('user.transactions.*') !!}</span>
-                        <span>{{ __('Transactions') }}</span>
-                    </a>
+                <!-- Transactions -->
+                <li class="accordion-item border-0">
+                    <div class="accordion-header" id="flush-headone">
+                        <button
+                            class="mb-1 shadow-none bg-transparent p-0 d-flex align-items-center list-option h-46 accordion-button accordion-icon collapsed"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                            aria-expanded="false" aria-controls="flush-collapseOne">
+                            <span class="ms-3 mr-20"><i class="fa-solid fa-money-bill-transfer"></i></span>
+                            <span class="child-currency text-dark"
+                                style="font-size: 16px !important">{{ __('Transactions') }}</span>
+                        </button>
+                    </div>
+                    <div id="flush-collapseOne"
+                        class="accordion-collapse collapse {{ request()->route()->named('user.withdrawal.*') ? 'show' : '' }}"
+                        aria-labelledby="flush-headtwo" data-bs-parent="#accordion-menu">
+                        <ul class="accordion-body collapse-child ml-28 p-0 pl-16 mr-20">
+
+                            <!-- Deposit history -->
+                            <li><a href="{{ route('user.transactions.index') }}"
+                                    class="mb-2 ml-34 pl-14 f-14 d-flex align-items-center list-option h-46">{{ __('Withdraw Money') }}</a>
+                            </li>
+
+                            <!-- Payment history -->
+                            <li><a href="{{ route('user.transactions.index') }}"
+                                    class="mb-2 ml-34 pl-14 f-14 d-flex align-items-center list-option h-46">{{ __('Withdrawal List') }}</a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
-                
+
                 <!-- Wallets -->
                 <li>
-                    <a href="{{ route('user.wallets.index') }}" class="mb-1 d-flex align-items-center list-option h-46 mt-7 {{ request()->route()->named('user.wallets.*') ? 'text-white bg-info' : 'text-info-100' }}">
-                        <span class="ms-3 mr-20">{!! menuSvgIcon('user.wallets.*') !!}</span>
-                        <span>{{ __('Wallets') }}</span>
+                    <a href="{{ route('user.wallets.index') }}"
+                        class="mb-1 d-flex align-items-center list-option h-46 mt-7 {{ request()->route()->named('user.wallets.*') ? 'text-dark bg-warning' : '' }} text-dark">
+                        <span class="ms-3 mr-20"><i class="fa-solid fa-wallet"></i></span>
+                        <span class=" f-16 text-dark">{{ __('Wallets') }}</span>
                     </a>
                 </li>
 
                 <!-- Deposit Money -->
                 <li>
-                    <a href="{{ route('user.deposit.create') }}" class="mb-1 d-flex align-items-center list-option h-46 mt-7 {{ request()->route()->named('user.deposit.*') ? 'text-white bg-info' : 'text-info-100' }}">
-                        <span class="ms-3 mr-20">{!! menuSvgIcon('user.deposit.*') !!}</span>
-                        <span>{{ __('Card') }}</span>
+                    <a href="{{ route('user.card.index') }}"
+                        class="mb-1 d-flex align-items-center list-option h-46 mt-7 {{ request()->route()->named('user.card.*') ? 'text-dark bg-warning' : '' }} text-dark">
+                        <span class="ms-3 mr-20"><i class="fa-solid fa-credit-card"></i></span>
+                        <span class=" f-16 text-dark">{{ __('Card') }}</span>
                     </a>
                 </li>
+                <br>
+
+
 
                 {{-- <li class="mb-21 d-flex align-items-center res-trans text-warning f-13 ml-20 mt-39 gilroy-Semibold text-uppercase">{{ __('Transactions') }}</li>
 
@@ -46,7 +76,7 @@
                 
 
                 <!-- Send Money -->
-                @if(Common::has_permission(auth()->id(),'manage_transfer'))
+                @if (Common::has_permission(auth()->id(), 'manage_transfer'))
                 <li>
                     <a href="{{ route('user.send_money.create') }}" class="mb-1 d-flex align-items-center list-option h-46 mt-7 {{ request()->route()->named('user.send_money.*') ? 'text-white bg-info' : 'text-info-100' }}">
                         <span class="ms-3 mr-20">{!! menuSvgIcon('user.send_money.*') !!}</span>
@@ -56,7 +86,7 @@
                 @endif
 
                 <!-- Request Money -->
-                @if(Common::has_permission(auth()->id(),'manage_request_payment'))
+                @if (Common::has_permission(auth()->id(), 'manage_request_payment'))
                 <li>
                     <a href="{{ route('user.request_money.create') }}" class="mb-1 d-flex align-items-center list-option h-46 mt-7 {{ request()->route()->named('user.request_money.*') ? 'text-white bg-info' : 'text-info-100' }}">
                         <span class="ms-3 mr-20">{!! menuSvgIcon('user.request_money.*') !!}</span>
@@ -66,7 +96,7 @@
                 @endif
 
                 <!-- Exchange Money -->
-                @if(Common::has_permission(auth()->id(),'manage_exchange'))
+                @if (Common::has_permission(auth()->id(), 'manage_exchange'))
                 <li>
                     <a href="{{ route('user.exchange_money.create') }}" class="mb-1 d-flex align-items-center list-option h-46 mt-7 {{ request()->route()->named('user.exchange_money.*') ? 'text-white bg-info' : 'text-info-100' }}">
                         <span class="ms-3 mr-20">{!! menuSvgIcon('user.exchange_money.*') !!}</span>
@@ -76,7 +106,7 @@
                 @endif
 
                 <!-- Withdraw Money -->
-                @if(Common::has_permission(auth()->id(),'manage_withdrawal'))
+                @if (Common::has_permission(auth()->id(), 'manage_withdrawal'))
                 <li class="accordion-item bg-secondary border-0">
                     <div class="accordion-header {{  request()->route()->named('user.withdrawal.*') ? 'bg-info' : '' }}" id="flush-headtwo">
                         <button class="mb-1 shadow-none bg-transparent p-0 d-flex align-items-center list-option h-46 accordion-button accordion-icon collapsed {{  request()->route()->named('user.withdrawal.*') ? 'text-white bg-info' : 'text-info-100' }}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
@@ -101,7 +131,7 @@
                 @endif
 
                 <!-- Merchant Payments -->
-                @if(Common::has_permission(auth()->id(),'manage_merchant'))
+                @if (Common::has_permission(auth()->id(), 'manage_merchant'))
                 <li class="accordion-item bg-secondary border-0">
                     <div class="accordion-header {{  request()->route()->named('user.merchants.*') ? 'bg-info' : '' }}" id="flush-headthree">
                         <button class="mb-1 shadow-none bg-transparent p-0 d-flex align-items-center list-option h-46 accordion-button accordion-icon  collapsed {{  request()->route()->named('user.merchants.*') ? 'text-white bg-info' : 'text-info-100' }}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
@@ -169,6 +199,32 @@
                     @endif
                 @endforeach
                 <!-- Custom Addons Header Menu End--> --}}
+            </ul>
+        </div>
+        <div style="flex-grow: 1 !important">
+            <ul class="list-unstyled ps-0 accordion accordion-flush position-absolute w-268">
+                <!-- Agent -->
+                <li>
+                    <a href="{{ route('agent.dashboard') }}"
+                        class="mb-1 d-flex align-items-center list-option h-46 mt-7 text-dark">
+                        <span class="ms-3 mr-20"><i class="fa-solid fa-people-roof"></i></span>
+                        <span>{{ __('Agent') }}</span>
+                    </a>
+                </li>
+                <!-- settings -->
+                <li>
+                    <a href="#" class="mb-1 d-flex align-items-center list-option h-46 mt-7 text-dark">
+                        <span class="ms-3 mr-20"><i class="fa-solid fa-gear"></i></span>
+                        <span>{{ __('Settings') }}</span>
+                    </a>
+                </li>
+                <!-- logout -->
+                <li>
+                    <a href="{{ url('logout') }}" class="mb-1 d-flex align-items-center list-option h-46 mt-7 text-dark">
+                        <span class="ms-3 mr-20"><i class="fa-solid fa-right-from-bracket"></i></span>
+                        <span>{{ __('Logout') }}</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

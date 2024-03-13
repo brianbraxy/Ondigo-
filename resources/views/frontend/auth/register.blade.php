@@ -2,7 +2,7 @@
 
 @section('styles')
     <link rel="stylesheet" type="text/css"
-        href="{{ asset('public/dist/plugins/intl-tel-input-17.0.19/css/intlTelInput.min.css') }}">
+        href="{{ asset('/dist/plugins/intl-tel-input-17.0.19/css/intlTelInput.min.css') }}">
 @endsection
 
 @section('content')
@@ -16,7 +16,7 @@
                             <div class="d-flex justify-content-start">
                                 <div class="logo-div">
                                     <a href="{{ url('/') }}">
-                                        <img src="{{ image(settings('logo'), 'logo') }}" alt="{{ __('Brand Logo') }}">
+                                        <img src="{{ asset("uploads/logos/ondigo.svg") }}" alt="{{ __('Brand Logo') }}">
                                     </a>
                                 </div>
                             </div>
@@ -30,7 +30,7 @@
                             <div class="transaction-image">
                                 <div class="static-image">
                                     <img class="img img-fluid"
-                                        src="{{ asset('public/frontend/templates/images/login/signup-static-img.svg') }}">
+                                        src="{{ asset('/frontend/templates/images/login/signup-static-img.svg') }}">
                                 </div>
                             </div>
                         </div>
@@ -173,11 +173,11 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('public/dist/plugins/html5-validation-1.0.0/validation.min.js') }}" type="text/javascript">
+    <script src="{{ asset('/dist/plugins/html5-validation-1.0.0/validation.min.js') }}" type="text/javascript">
     </script>
-    <script src="{{ asset('public/dist/plugins/intl-tel-input-17.0.19/js/intlTelInput-jquery.min.js') }}"
+    <script src="{{ asset('/dist/plugins/intl-tel-input-17.0.19/js/intlTelInput-jquery.min.js') }}"
         type="text/javascript"></script>
-    <script src="{{ asset('public/dist/js/isValidPhoneNumber.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/dist/js/isValidPhoneNumber.min.js') }}" type="text/javascript"></script>
 
     <script>
         'use strict';
@@ -189,7 +189,7 @@
         let signingUpText = '{{ __('Continuing...') }}';
         let countryShortCode = '{{ getDefaultCountry() }}';
         let validPhoneNumberText = '{{ __('Please enter a valid international phone number.') }}'
-        let utilsJsScript = '{{ asset('public/dist/plugins/intl-tel-input-17.0.19/js/utils.min.js') }}';
+        let utilsJsScript = '{{ asset('/dist/plugins/intl-tel-input-17.0.19/js/utils.min.js') }}';
     </script>
-    <script src="{{ asset('public/frontend/customs/js/register/register.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/frontend/customs/js/register/register.min.js') }}" type="text/javascript"></script>
 @endsection

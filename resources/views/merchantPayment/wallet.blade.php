@@ -75,12 +75,12 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('public/dist/plugins/html5-validation-1.0.0/validation.min.js') }}"></script>
+    <script src="{{ asset('/dist/plugins/html5-validation-1.0.0/validation.min.js') }}"></script>
 
     <script>
         'use strict';
         let walletSubmitBtnText = "{{ __('Confirming...') }}"; 
     </script>
 
-    <script src="{{ asset('public/frontend/customs/js/merchant-payments/wallet.min.js') }}"></script>
+    <script src="{{ asset('/frontend/customs/js/merchant-payments/wallet.min.js') }}"></script>
 @endsection

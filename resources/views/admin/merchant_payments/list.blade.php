@@ -4,10 +4,10 @@
 
 @section('head_style')
     <!-- Bootstrap daterangepicker -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/dist/plugins/daterangepicker-3.1/daterangepicker.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/dist/plugins/daterangepicker-3.1/daterangepicker.min.css')}}">
     <!-- dataTables -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/dist/plugins/DataTables/DataTables-1.10.18/css/jquery.dataTables.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/dist/plugins/DataTables/Responsive-2.2.2/css/responsive.dataTables.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/dist/plugins/DataTables/DataTables-1.10.18/css/jquery.dataTables.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/dist/plugins/DataTables/Responsive-2.2.2/css/responsive.dataTables.min.css') }}">
 @endsection
 
 @section('page_content')
@@ -118,11 +118,11 @@
 @push('extra_body_scripts')
 
 <!-- Bootstrap daterangepicker -->
-<script src="{{ asset('public/dist/plugins/daterangepicker-3.1/daterangepicker.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/plugins/daterangepicker-3.1/daterangepicker.min.js') }}" type="text/javascript"></script>
 
 <!-- jquery.dataTables js -->
-<script src="{{ asset('public/dist/plugins/DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/dist/plugins/DataTables/Responsive-2.2.2/js/dataTables.responsive.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/plugins/DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/plugins/DataTables/Responsive-2.2.2/js/dataTables.responsive.min.js') }}" type="text/javascript"></script>
 
 {!! $dataTable->scripts() !!}
 

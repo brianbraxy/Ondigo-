@@ -2,7 +2,7 @@
 
 @push('css')
     <!-- sweetalert -->
-    <link rel="stylesheet" type="text/css" href="{{asset('public/dist/libraries/sweetalert/sweetalert.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/dist/libraries/sweetalert/sweetalert.min.css')}}">
 @endpush
 
 @section('content')
@@ -162,8 +162,8 @@
 
 
 @push('js')
-<script src="{{ asset('public/dist/libraries/fingerprintjs2/fingerprintjs2.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/dist/libraries/sweetalert/sweetalert.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/libraries/fingerprintjs2/fingerprintjs2.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/libraries/sweetalert/sweetalert.min.js') }}" type="text/javascript"></script>
 
 <script>
     'use strict';
@@ -183,5 +183,5 @@
     var successMessageText = "{{ __('2fa Setting updated successfully.') }}";
     var oneTimeMessageText = "{{ __('One time password is incorrect!') }}";
 </script>
-<script src="{{ asset('public/user/customs/js/settings.min.js') }}"></script>
+<script src="{{ asset('/user/customs/js/settings.min.js') }}"></script>
 @endpush

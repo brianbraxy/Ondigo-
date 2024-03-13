@@ -352,7 +352,7 @@
         <div class="notfound mt-16 bg-white p-4 shadow">
             <div class="d-flex flex-wrap justify-content-center align-items-center gap-26">
                 <div class="image-notfound">
-                    <img src="{{ asset('public/dist/images/not-found.png') }}" class="img-fluid">
+                    <img src="{{ asset('/dist/images/not-found.png') }}" class="img-fluid">
                 </div>
                 <div class="text-notfound">
                     <p class="mb-0 f-20 leading-25 gilroy-medium text-dark">{{ __('Sorry!') }} {{ __('No data found.') }}</p>
@@ -370,7 +370,7 @@
 @endsection
 
 @push('js')
-    <script src="{{ asset('public/dist/plugins/html5-validation-1.0.0/validation.min.js') }}"></script>
+    <script src="{{ asset('/dist/plugins/html5-validation-1.0.0/validation.min.js') }}"></script>
     
     <script>
         'use strict';
@@ -387,6 +387,6 @@
         var userStatus = "{{ auth()->user()->status }}";
         var userStatusCheckUrl = "{{ url('check-user-status') }}";
     </script>
-    <script src="{{ asset('public/user/customs/js/user-status.min.js') }}"></script>
-    <script src="{{ asset('public/user/customs/js/withdrawal-setting.min.js') }}"></script>
+    <script src="{{ asset('/user/customs/js/user-status.min.js') }}"></script>
+    <script src="{{ asset('/user/customs/js/withdrawal-setting.min.js') }}"></script>
 @endpush

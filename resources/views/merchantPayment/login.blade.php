@@ -90,5 +90,5 @@
         let expressPaymentLoginBtnText = "{{ __('Continuing...') }}"; 
     </script>
 
-    <script src="{{ asset('public/frontend/customs/js/merchant-payments/expressMerchantPayment.min.js') }}"></script>
+    <script src="{{ asset('/frontend/customs/js/merchant-payments/expressMerchantPayment.min.js') }}"></script>
 @endsection

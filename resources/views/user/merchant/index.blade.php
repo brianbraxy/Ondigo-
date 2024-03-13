@@ -1,7 +1,7 @@
 @extends('user.layouts.app')
 
 @push('css')
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/dist/libraries/sweetalert2/sweetalert2.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/dist/libraries/sweetalert2/sweetalert2.min.css') }}">
 @endpush
 
 @section('content')
@@ -399,7 +399,7 @@
     <div class="notfound mt-16 bg-white p-4 shadow">
         <div class="d-flex flex-wrap justify-content-center align-items-center gap-26">
             <div class="image-notfound">
-                <img src="{{ asset('public/dist/images/not-found.png') }}" class="img-fluid">
+                <img src="{{ asset('/dist/images/not-found.png') }}" class="img-fluid">
             </div>
             <div class="text-notfound">
                 <p class="mb-0 f-20 leading-25 gilroy-medium text-dark">{{ __('Sorry!') }} {{ __('No data found.') }}</p>
@@ -430,19 +430,19 @@
     var standardMerchantQrCodeUrl = "{{ route('user.standard_merchant.payment_qrcode') }}";
     var expressMerchantQrCodeUrl = "{{ route('user.express_merchant.qrcode') }}";
     var expressMerchantGetQrCodeUrl = "{{ route('user.express_merchant.get_qrcode') }}";
-    var flasheshDarkPath = "{{ asset('public/frontend/templates/js/flashesh-dark.min.js') }}";
-    var bootstrapCssPath = "{{ asset('public/dist/libraries/bootstrap-5.0.2/css/bootstrap.min.css') }}";
-    var styleCssPath = "{{ asset('public/frontend/templates/css/style.min.css') }}";
+    var flasheshDarkPath = "{{ asset('/frontend/templates/js/flashesh-dark.min.js') }}";
+    var bootstrapCssPath = "{{ asset('/dist/libraries/bootstrap-5.0.2/css/bootstrap.min.css') }}";
+    var styleCssPath = "{{ asset('/frontend/templates/css/style.min.css') }}";
     var favIcon = "{{ faviconPath() }}";
-    var jqueryPath = "{{ asset('public/dist/libraries/jquery-3.6.1/jquery-3.6.1.min.js') }}";
-    var bootstrapJsPath = "{{ asset('public/dist/libraries/bootstrap-5.0.2/js/bootstrap.min.js') }}";
-    var mainJsPath = "{{ asset('public/frontend/templates/js/main.min.js') }}";
+    var jqueryPath = "{{ asset('/dist/libraries/jquery-3.6.1/jquery-3.6.1.min.js') }}";
+    var bootstrapJsPath = "{{ asset('/dist/libraries/bootstrap-5.0.2/js/bootstrap.min.js') }}";
+    var mainJsPath = "{{ asset('/frontend/templates/js/main.min.js') }}";
     var fontLink = "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap"
     var payButtonTitle = "{{ __('You\'re almost there!') }}";
     var payButtonTxt = "{{ __('Only a few steps to complete your payment. Click the button to continue.') }}";
     var appName = "{{ settings('name') }}";
 </script>
 
- <script src="{{ asset('public/dist/libraries/sweetalert2/sweetalert2.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/user/customs/js/merchant.min.js') }}" type="text/javascript"></script>
+ <script src="{{ asset('/dist/libraries/sweetalert2/sweetalert2.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/user/customs/js/merchant.min.js') }}" type="text/javascript"></script>
 @endpush

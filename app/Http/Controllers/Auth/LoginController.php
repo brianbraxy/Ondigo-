@@ -49,6 +49,20 @@ class LoginController extends Controller
         return view('frontend.auth.login', $data);
     }
 
+    public function agentLogin()
+    {
+        $data['title'] = 'Login';
+
+        if (Auth::check()) {
+            return redirect('/dashboard/agent');
+        }
+
+        $data['setting'] = settings('general'); 
+        captchaCheck(settings('has_captcha'), 'site_key');
+
+        return view('frontend.auth.agentLogin', $data);
+    }
+
     public function authenticate(Request $request)
     {
         captchaCheck(settings('has_captcha'), 'secret_key');

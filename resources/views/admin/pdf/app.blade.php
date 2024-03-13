@@ -21,7 +21,7 @@
                 </div>
                 <div class="logo-img">
                     <div>
-                        <img src="{{ image(settings('logo'), 'logo') }}" alt="logo">
+                        <img src="{{ asset("uploads/logos/ondigo.svg") }}" alt="logo">
                     </div>
                 </div>
             </div>

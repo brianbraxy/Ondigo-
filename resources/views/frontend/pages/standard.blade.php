@@ -15,7 +15,7 @@
                     <button class="btn btn-dark btn-lg">{{ __('Developer') }}</button>
                 </div>
                 <div class="merchant-text">
-                    <p>{{ __('With Pay Money Standard and Express, you can easily and safely receive online payments from your customer.') }}</p>
+                    <p>{{ __('With Ondigo Standard and Express, you can easily and safely receive online payments from your customer.') }}</p>
                 </div>
             </div>
         </div>
@@ -30,11 +30,11 @@
         <div class="row">
             <div class="col-xl-7">
                 <div class="standard-title-text">
-                    <h3>{{ __('A step-by-step guide on how to integrate Pay Money Standard') }}</h3>
+                    <h3>{{ __('A step-by-step guide on how to integrate Ondigo Standard') }}</h3>
                 </div>
                 <div class="merchant-left-img">
-                    <img src="{{ asset('public/frontend/templates/images/standard-merchant/merchant.svg') }}" class="img-fluid light-img">
-                    <img src="{{ asset('public/frontend/templates/images/standard-merchant/d-merchant.svg') }}" class="img-fluid dark-img">
+                    <img src="{{ asset('/frontend/templates/images/standard-merchant/merchant.svg') }}" class="img-fluid light-img">
+                    <img src="{{ asset('/frontend/templates/images/standard-merchant/d-merchant.svg') }}" class="img-fluid dark-img">
                 </div>
             </div>
             <div class="col-xl-5">
@@ -138,8 +138,8 @@
             </div>
             <div class="col-xl-7">
                 <div class="merchant-left-img">
-                    <img src="{{ asset('public/frontend/templates/images/standard-merchant/merchant-copy.svg') }}" class="img-fluid light-img">
-                    <img src="{{ asset('public/frontend/templates/images/standard-merchant/d-merchant-copy.svg') }}" class="img-fluid dark-img">
+                    <img src="{{ asset('/frontend/templates/images/standard-merchant/merchant-copy.svg') }}" class="img-fluid light-img">
+                    <img src="{{ asset('/frontend/templates/images/standard-merchant/d-merchant-copy.svg') }}" class="img-fluid dark-img">
                 </div>
             </div>
         </div>
@@ -149,8 +149,8 @@
         <div class="row">
             <div class="col-xl-7"> 
                 <div class="merchant-left-img">
-                    <img src="{{ asset('public/frontend/templates/images/standard-merchant/there.svg') }}" class="img-fluid light-img">
-                    <img src="{{ asset('public/frontend/templates/images/standard-merchant/d-there.svg') }}" class="img-fluid dark-img">
+                    <img src="{{ asset('/frontend/templates/images/standard-merchant/there.svg') }}" class="img-fluid light-img">
+                    <img src="{{ asset('/frontend/templates/images/standard-merchant/d-there.svg') }}" class="img-fluid dark-img">
                 </div>
             </div>
             <div class="col-xl-5 column-centered">

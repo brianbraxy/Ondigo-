@@ -90,8 +90,8 @@
 @include('common.restrict_number_to_pref_decimal')
 @include('common.restrict_character_decimal_point')
 
-<script src="{{ asset('public/dist/plugins/html5-validation-1.0.0/validation.min.js') }}"></script>
-<script src="{{ asset('public/dist/plugins/debounce-1.1/jquery.ba-throttle-debounce.min.js') }}"></script>
+<script src="{{ asset('/dist/plugins/html5-validation-1.0.0/validation.min.js') }}"></script>
+<script src="{{ asset('/dist/plugins/debounce-1.1/jquery.ba-throttle-debounce.min.js') }}"></script>
 <script>
     "use strict";
     var csrfToken = $('[name="_token"]').val();
@@ -111,6 +111,6 @@
     let submitBtnText = '{{ __("Processing...") }}';
 
 </script>
-<script src="{{ asset('public/user/customs/js/request-money.min.js') }}"></script>
+<script src="{{ asset('/user/customs/js/request-money.min.js') }}"></script>
 
 @endpush

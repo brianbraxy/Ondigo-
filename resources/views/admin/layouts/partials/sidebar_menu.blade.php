@@ -115,12 +115,20 @@
         </li>
     @endif
 
-    <!-- revenues -->
+    {{-- <!-- revenues -->
     @if(Common::has_permission(auth()->guard('admin')->id(), 'view_revenue'))
         <li class="{{ isset($menu) && $menu == 'revenues' ? 'active' : '' }}">
             <a href="{{ url(config('adminPrefix').'/revenues') }}"><i class="fa fa-book"></i><span>{{ __('Revenues') }}</span></a>
         </li>
-    @endif
+    @endif --}}
+
+     <!-- revenues -->
+     {{-- {{dd(Common::has_permission(auth()->guard('admin')->id(), 'view_card'))}} --}}
+     @if(Common::has_permission(auth()->guard('admin')->id(), 'view_card'))
+     <li class="{{ isset($menu) && $menu == 'revenues' ? 'active' : '' }}">
+         <a href="{{ url(config('adminPrefix').'/cards') }}"><i class="fa fa-book"></i><span>{{ __('Cards') }}</span></a>
+     </li>
+ @endif
 
     <!-- Disputes -->
     @if(Common::has_permission(auth()->guard('admin')->id(), 'view_disputes'))

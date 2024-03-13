@@ -24,7 +24,7 @@
                     @endif
                 </div>
                 <div class="amount-logo">
-                    <img  src="{{ asset('public/dist/images/gateways/payments/stripe.png') }}" alt="logo" class="img-fluid">
+                    <img  src="{{ asset('/dist/images/gateways/payments/stripe.png') }}" alt="logo" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -99,8 +99,8 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('public/dist/plugins/html5-validation-1.0.0/validation.min.js') }}"></script>
-    <script src="{{ asset('public/dist/plugins/debounce-1.1/jquery.ba-throttle-debounce.min.js') }}"></script>
+    <script src="{{ asset('/dist/plugins/html5-validation-1.0.0/validation.min.js') }}"></script>
+    <script src="{{ asset('/dist/plugins/debounce-1.1/jquery.ba-throttle-debounce.min.js') }}"></script>
     <script>
         'use strict';
         let amount = "{{ $totalAmount }}";
@@ -108,5 +108,5 @@
         let stripeSubmitBtnText = "{{ __('Confirming...') }}"; 
     </script>
 
-    <script src="{{ asset('public/frontend/customs/js/merchant-payments/stripe.min.js') }}"></script>
+    <script src="{{ asset('/frontend/customs/js/merchant-payments/stripe.min.js') }}"></script>
 @endsection

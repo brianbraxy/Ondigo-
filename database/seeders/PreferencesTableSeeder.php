@@ -45,7 +45,7 @@ class PreferencesTableSeeder extends Seeder
 
         $pre[8]['category'] = 'company';
         $pre[8]['field']    = 'company_name';
-        $pre[8]['value']    = 'Pay Money';
+        $pre[8]['value']    = 'Ondigo';
 
         $pre[9]['category'] = 'company';
         $pre[9]['field']    = 'company_email';

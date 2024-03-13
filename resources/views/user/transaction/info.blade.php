@@ -1,6 +1,6 @@
 @foreach($transactions as $key=>$transaction)
     @php
-        $transactionTypes = [Deposit, Withdrawal, Transferred, Received, Exchange_From, Exchange_To, Request_Sent, Request_Received, Payment_Sent, Payment_Received, Crypto_Sent, Crypto_Received];
+        $transactionTypes = ['Deposit', 'Withdrawal', 'Transferred', 'Received', 'Exchange_From', 'Exchange_To', 'Request_Sent', 'Request_Received', 'Payment_Sent', 'Payment_Received', 'Crypto_Sent', 'Crypto_Received'];
     @endphp
     @if (in_array($transaction->transaction_type?->id, $transactionTypes))
     <div class="transac-parent cursor-pointer" data-bs-toggle="modal" data-bs-target="#transaction-Info-{{ $key }}">
@@ -10,19 +10,19 @@
                 <!-- Image -->
                 <div class="deposit-circle d-flex justify-content-center align-items-center">
                     @php
-                        if (in_array($transaction->transaction_type?->id, [Deposit, Withdrawal])) {
+                        if (in_array($transaction->transaction_type?->id, ['Deposit', 'Withdrawal'])) {
                             $transactionImage = null;
                             $directoryName = $transaction->payment_method?->name;
-                        } else if (in_array($transaction->transaction_type?->id, [Transferred, Received, Request_Sent, Request_Received])) {
+                        } else if (in_array($transaction->transaction_type?->id, ['Transferred', 'Received', 'Request_Sent', 'Request_Received'])) {
                             $transactionImage = $transaction->end_user?->picture ?? null;
                             $directoryName = 'profile';
-                        } else if (in_array($transaction->transaction_type?->id, [Exchange_From, Exchange_To])) {
+                        } else if (in_array($transaction->transaction_type?->id, ['Exchange_From', 'Exchange_To'])) {
                             $transactionImage = $transaction->currency?->logo;
                             $directoryName = 'currency';
-                        } else if (in_array($transaction->transaction_type?->id, [Payment_Sent, Payment_Received])) {
+                        } else if (in_array($transaction->transaction_type?->id, ['Payment_Sent', 'Payment_Received'])) {
                             $transactionImage = $transaction->merchant?->logo;
                             $directoryName = 'merchant';
-                        } else if (in_array($transaction->transaction_type?->id, [Crypto_Sent, Crypto_Received])) {
+                        } else if (in_array($transaction->transaction_type?->id, ['Crypto_Sent', 'Crypto_Received'])) {
                             $transactionImage = $transaction->end_user?->picture ?? null;
                             $directoryName = 'profile';
                         } else {
@@ -38,11 +38,11 @@
                     <p class="mb-0 text-dark f-16 gilroy-medium theme-tran">{{ strpos($transaction->transaction_type?->name, '_') !== false ? str_replace('_', ' ', $transaction->transaction_type?->name) : $transaction->transaction_type?->name }}</p>
                     <div class="d-flex flex-wrap">
                         @php
-                            if (in_array($transaction->transaction_type?->id, [Deposit, Withdrawal, Payment_Sent, Payment_Received, Crypto_Sent])) {
+                            if (in_array($transaction->transaction_type?->id, ['Deposit', 'Withdrawal', 'Payment_Sent', 'Payment_Received', 'Crypto_Sent'])) {
                                 $transactionInfo = $transaction->payment_method?->id == Mts ? settings('name') : $transaction->payment_method?->name;
-                            } else if (in_array($transaction->transaction_type?->id, [Transferred, Received, Request_Sent, Request_Received, Crypto_Received])) {
+                            } else if (in_array($transaction->transaction_type?->id, ['Transferred', 'Received', 'Request_Sent', 'Request_Received', 'Crypto_Received'])) {
                                 $transactionInfo = getColumnValue($transaction->end_user, 'first_name', 'last_name', 'unregistered');
-                            } else if (in_array($transaction->transaction_type?->id, [Exchange_From, Exchange_To])) {
+                            } else if (in_array($transaction->transaction_type?->id, ['Exchange_From', 'Exchange_To'])) {
                                 $transactionInfo = $transaction->currency?->code;
                             } else {
                                 $transactionInfo = null;
@@ -66,7 +66,7 @@
             <div class="d-flex justify-content-center align-items-center">
                 <div>
                     <p class="mb-0 gilroy-medium text-gray-100 r-f-12 f-16 ph-20">
-                        @if (in_array($transaction->transaction_type?->id, [Deposit, Received, Exchange_To, Payment_Received, Request_Sent, Crypto_Received])) 
+                        @if (in_array($transaction->transaction_type?->id, ['Deposit', 'Received', 'Exchange_To', 'Payment_Received', 'Request_Sent', 'Crypto_Received'])) 
                             <svg class="mx-2" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M8.89992 3.84617L7.02742 5.71867L5.88409 6.86784C5.65113 7.10045 5.33538 7.23109 5.00617 7.23109C4.67697 7.23109 4.36122 7.10045 4.12826 6.86784L1.10659 3.84617C0.709923 3.4495 0.995756 2.77284 1.54992 2.77284H8.45659C9.01659 2.77284 9.29659 3.4495 8.89992 3.84617Z" fill="#2AAA5E" />
                             </svg>
@@ -121,16 +121,16 @@
                             <p class="mb-0 mt-9 text-dark dark-5B f-20 gilroy-Semibold transac-title">{{ __('Transaction Details') }}</p>
 
                             <!-- Crypto Address -->
-                            @if ($transaction->transaction_type_id == Crypto_Sent || $transaction->transaction_type_id == Crypto_Received)
+                            @if ($transaction->transaction_type_id == 'Crypto_Sent' || $transaction->transaction_type_id == 'Crypto_Received')
                                 <div class="row gx-sm-5">
                                     <div class="col-12">
                                         <p class="mb-0 mt-4 text-gray-100 gilroy-medium f-13 leading-20 r-f-9 r-mt-11">
                                             {{ getTransactionInfo($transaction->transaction_type?->name)['type'] }}
                                             {{ __('Address') }}</p>
                                         <p class="mb-0 mt-5p text-dark gilroy-medium f-15 leading-22 r-text">
-                                            @if ($transaction->transaction_type_id == Crypto_Sent)
+                                            @if ($transaction->transaction_type_id == 'Crypto_Sent')
                                                 {{ optional(cryptoApiLogDetails($transaction))['receiverAddress'] }}
-                                            @elseif($transaction->transaction_type_id == Crypto_Received)
+                                            @elseif($transaction->transaction_type_id == 'Crypto_Received')
                                                 {{ optional(cryptoApiLogDetails($transaction))['senderAddress'] }}
                                             @endif
                                         </p>

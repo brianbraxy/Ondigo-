@@ -3,7 +3,7 @@
 @section('title', __('Edit Profile'))
 
 @section('head_style')
-  <link rel="stylesheet" type="text/css" href="{{ asset('public/dist/plugins/intl-tel-input-17.0.19/css/intlTelInput.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('/dist/plugins/intl-tel-input-17.0.19/css/intlTelInput.min.css') }}">
 @endsection
 
 @section('page_content')
@@ -174,9 +174,9 @@
 @endsection
 
 @push('extra_body_scripts')
-<script src="{{ asset('public/dist/plugins/html5-validation-1.0.0/validation.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/dist/plugins/intl-tel-input-17.0.19/js/intlTelInput-jquery.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/dist/js/isValidPhoneNumber.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/plugins/html5-validation-1.0.0/validation.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/plugins/intl-tel-input-17.0.19/js/intlTelInput-jquery.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/js/isValidPhoneNumber.min.js') }}" type="text/javascript"></script>
 <script type="text/javascript">
     'use strict';
     var userNameError = '{{ __("Please enter only alphabet and spaces.") }}';
@@ -191,5 +191,5 @@
     var passwordMatchErrorText = '{{ __("Please enter same value as the password field.") }}';
     var updatingText = '{{ __("Updating...") }}';
 </script>
-<script src="{{ asset('public/admin/customs/js/user/user.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/admin/customs/js/user/user.min.js') }}" type="text/javascript"></script>
 @endpush

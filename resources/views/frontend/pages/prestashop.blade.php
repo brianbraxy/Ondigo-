@@ -14,7 +14,7 @@
 					<button class="btn btn-dark btn-lg">{{ __('Developer') }}</button>
 				</div>
 				<div class="merchant-text">
-					<p>{{ __('With Pay Money Standard and Express, you can easily and safely receive online payments from your customer.') }}</p>
+					<p>{{ __('With Ondigo Standard and Express, you can easily and safely receive online payments from your customer.') }}</p>
 				</div>
 			</div>
 		</div>

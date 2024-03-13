@@ -77,6 +77,7 @@ class Kernel extends HttpKernel
         'check-authorization-token' => \App\Http\Middleware\CheckAuthorizationToken::class,
         'check-enabled-currencies-preference' => \App\Http\Middleware\CheckEnabledCurrenciesPreference::class,
         'api_version' => \App\Http\Middleware\APIversion::class,
+        'agent' => \App\Http\Middleware\Agent::class,
 
     ];
 }

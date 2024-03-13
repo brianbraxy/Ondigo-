@@ -5,8 +5,8 @@
 @section('title', __('General Settings'))
 
 @section('head_style')
-  <link rel="stylesheet" type="text/css" href="{{ asset('public/dist/libraries/sweetalert/sweetalert.min.css')}}">
-  <link rel="stylesheet" href="{{ asset('public/dist/plugins/bootstrap-toggle-2.2.0/css/bootstrap-toggle.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('/dist/libraries/sweetalert/sweetalert.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('/dist/plugins/bootstrap-toggle-2.2.0/css/bootstrap-toggle.min.css') }}">
 @endsection
 
 @section('page_content')
@@ -158,10 +158,10 @@
 @endsection
 
 @push('extra_body_scripts')
-  <script src="{{ asset('public/dist/plugins/jquery-validation-1.17.0/dist/jquery.validate.min.js') }}" type="text/javascript"></script>
-  <script src="{{ asset('public/dist/plugins/jquery-validation-1.17.0/dist/additional-methods.min.js') }}" type="text/javascript"></script>
-  <script src="{{ asset('public/dist/libraries/sweetalert/sweetalert.min.js')}}" type="text/javascript"></script>
-  <script src="{{ asset('public/dist/plugins/bootstrap-toggle-2.2.0/js/bootstrap-toggle.min.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('/dist/plugins/jquery-validation-1.17.0/dist/jquery.validate.min.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('/dist/plugins/jquery-validation-1.17.0/dist/additional-methods.min.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('/dist/libraries/sweetalert/sweetalert.min.js')}}" type="text/javascript"></script>
+  <script src="{{ asset('/dist/plugins/bootstrap-toggle-2.2.0/js/bootstrap-toggle.min.js') }}" type="text/javascript"></script>
   @include('common.read-file-on-change')
 
   <script type="text/javascript">
@@ -175,5 +175,5 @@
     var defaultImageUrl = '{{ url("public/uploads/userPic/default-image.png") }}';
     var selectedAllowedWallets = '{{ $selectedAllowedWallets }}';
   </script>
-  <script src="{{ asset('public/admin/customs/js/settings/general/settings.min.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('/admin/customs/js/settings/general/settings.min.js') }}" type="text/javascript"></script>
 @endpush

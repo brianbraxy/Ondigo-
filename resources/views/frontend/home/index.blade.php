@@ -379,7 +379,7 @@
 				<div class="col-md-6 col-xl-4 px-16">
 					<div class="p-48-44 h-355 mb-32 gray-shad">
 						<div>
-							<img class="online-shop" src="{{ asset('public/frontend/templates/images/home/online-shop.png') }}">
+							<img class="online-shop" src="{{ asset('/frontend/templates/images/home/online-shop.png') }}">
 						</div>
 						<p class="mb-0 color-5B gilroy-Semibold f-24 leading-32 f-r16 mt-28">{{ __('E-Commerce') }}</p>
 						<p class="mb-0 mt-21 color-5B f-18 leading-30 gilroy-light">
@@ -391,7 +391,7 @@
 				<div class="col-md-6 col-xl-4 px-16">
 					<div class="p-48-44 h-355 mb-32 gray-shad">
 						<div>
-							<img class="online-shop" src="{{ asset('public/frontend/templates/images/home/booking.png') }}">
+							<img class="online-shop" src="{{ asset('/frontend/templates/images/home/booking.png') }}">
 						</div>
 						<p class="mb-0 color-5B gilroy-Semibold f-24 leading-32 f-r16 mt-28">{{ __('E-Booking') }}</p>
 						<p class="mb-0 mt-21 color-5B f-18 leading-30 gilroy-light">{{ __('Allow your customers to make payment for bookings or appointments in a quick, easy and secured process that suits them the most.') }}</p>
@@ -401,7 +401,7 @@
 				<div class="col-md-6 col-xl-4 px-16">
 					<div class="p-48-44 h-355 mb-32 gray-shad">
 						<div>
-							<img class="cryptocurrency-img" src="{{ asset('public/frontend/templates/images/home/cryptocurrency.png') }}">
+							<img class="cryptocurrency-img" src="{{ asset('/frontend/templates/images/home/cryptocurrency.png') }}">
 						</div>
 						<p class="mb-0 color-5B gilroy-Semibold f-24 leading-32 f-r16 mt-28">{{ __('Crypto Payment') }}</p>
 						<p class="mb-0 mt-21 color-5B f-18 leading-30 gilroy-light">{{ __('A powerful solution that allows your customers to make payment using crypto coins including Bitcoin, Litecoin, Dogecoin and many more.') }}</p>
@@ -411,7 +411,7 @@
 				<div class="col-md-6 col-xl-4 px-16">
 					<div class="p-48-44 h-355 mb-32 gray-shad">
 						<div>
-							<img class="checkout-img" src="{{ asset('public/frontend/templates/images/home/checkout.png') }}" alt="">
+							<img class="checkout-img" src="{{ asset('/frontend/templates/images/home/checkout.png') }}" alt="">
 						</div>
 						<p class="mb-0 color-5B gilroy-Semibold f-24 leading-32 f-r16 mt-28">{{ __('Mobile Recharge') }}</p>
 						<p class="mb-0 mt-21 color-5B f-18 leading-30 gilroy-light">{{ __('Easily top-up airtime and data on the worlds leading mobile operators and makes payments using any of their wallets on the system.') }}</p>
@@ -421,7 +421,7 @@
 				<div class="col-md-6 col-xl-4 px-16">
 					<div class="p-48-44 h-355 mb-32 gray-shad">
 						<div>
-							<img class="online-shop" src="{{ asset('public/frontend/templates/images/home/party.png') }}" alt="">
+							<img class="online-shop" src="{{ asset('/frontend/templates/images/home/party.png') }}" alt="">
 						</div>
 						<p class="mb-0 color-5B gilroy-Semibold f-24 leading-32 f-r16 mt-28">{{ __('Event Management') }}</p>
 						<p class="mb-0 mt-21 color-5B f-18 leading-30 gilroy-light">{{ __('Do not hesitate to compete with a lot of events. A beautiful and easily trackable event management is provided for making your tasks get done easier.') }}</p>
@@ -431,7 +431,7 @@
 				<div class="col-md-6 col-xl-4 px-16">
 					<div class="p-48-44 h-355 mb-32 gray-shad">
 						<div>
-							<img class="clerk-img" src="{{ asset('public/frontend/templates/images/home/clerk.png') }}" alt="">
+							<img class="clerk-img" src="{{ asset('/frontend/templates/images/home/clerk.png') }}" alt="">
 						</div>
 						<p class="mb-0 color-5B gilroy-Semibold f-24 leading-32 f-r16 mt-28">{{ __('Instant Onboarding') }}</p>
 						<p class="mb-0 mt-21 color-5B f-18 leading-30 gilroy-light">{{ __('Merchants can get payments instantly from anywhere, anytime without any hassle. A simple and better way to expand your business.') }}
@@ -440,8 +440,8 @@
 				</div>
 			</div>
 		</div>
-		<img class="dot-img" src="{{ asset('public/frontend/templates/images/home/dot.png') }}">
-		<img class="dot-img-two" src="{{ asset('public/frontend/templates/images/home/dot.png') }}">
+		<img class="dot-img" src="{{ asset('/frontend/templates/images/home/dot.png') }}">
+		<img class="dot-img-two" src="{{ asset('/frontend/templates/images/home/dot.png') }}">
 	</div>
 
 	<!-- how does it work section -->
@@ -554,8 +554,8 @@
 				</a>
 			</div>
 			<div class="col-md-6 p-sm:0 mt-r42 position-relative">
-				<img class="video-img" src="{{ asset('public/frontend/templates/images/home/dotvid.png') }}" alt="dot">
-				<img class="custom-z" src="{{ asset('public/frontend/templates/images/home/rectangle.png') }}" alt="">
+				<img class="video-img" src="{{ asset('/frontend/templates/images/home/dotvid.png') }}" alt="dot">
+				<img class="custom-z" src="{{ asset('/frontend/templates/images/home/rectangle.png') }}" alt="">
 			</div>
 		</div>
 	</div>
@@ -716,10 +716,10 @@
 			</div>
 
 			<div class="dot-left-side">
-				<img src="{{ asset('public/frontend/templates/images/home/dot.png') }}">
+				<img src="{{ asset('/frontend/templates/images/home/dot.png') }}">
 			</div>
 			<div class="dot-right-side">
-				<img src="{{ asset('public/frontend/templates/images/home/half-right-dot.svg') }}">
+				<img src="{{ asset('/frontend/templates/images/home/half-right-dot.svg') }}">
 			</div>
 		</div>
 
@@ -734,7 +734,7 @@
 		</div>
 		<div class="owl-carousel owl-carousel1 owl-theme mt-128">
 		  <div>
-			<div class="card text-center"><img class="card-img-top" src="{{ asset('public/frontend/templates/images/home/clients-2.jpg') }}">
+			<div class="card text-center"><img class="card-img-top" src="{{ asset('/frontend/templates/images/home/clients-2.jpg') }}">
 			  <div class="card-body">
 				<p class="gilroy-light">One of the best money transfering plaform, period! We used {{ settings('name') }} for our business and our customers are using it everyday and haven’t faced any problems so far. Besides, the techvillage team is pretty talented.</p>
 				<h5>Ronne Galle <br /><span> CTO, Baribazaar.com </span>
@@ -743,7 +743,7 @@
 			</div>
 		  </div>
 		  <div>
-			<div class="card text-center"><img class="card-img-top" src="{{ asset('public/frontend/templates/images/home/clients-4.jpg') }}">
+			<div class="card text-center"><img class="card-img-top" src="{{ asset('/frontend/templates/images/home/clients-4.jpg') }}">
 			  <div class="card-body">
 				<p class="card-text">Full of great features, everything you would like to have in a payment gateway. Would love it so much if it can tackle with the big boys.Cheers!</p>
 				<h5>Mike Cakuloo<br /><span> Technical Lead, Cuber Drive </span>
@@ -752,7 +752,7 @@
 			</div>
 		  </div>
 		  <div>
-			<div class="card text-center"><img class="card-img-top" src="{{ asset('public/frontend/templates/images/home/client-5.jpg') }}" alt="">
+			<div class="card text-center"><img class="card-img-top" src="{{ asset('/frontend/templates/images/home/client-5.jpg') }}" alt="">
 			  <div class="card-body">
 				<p class="card-text">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat</p>
 				<h5>Martha Brown<br /><span> Project Manager </span>
@@ -761,7 +761,7 @@
 			</div>
 		  </div>
 		  <div>
-			<div class="card text-center"><img class="card-img-top" src="{{ asset('public/frontend/templates/images/home/clients-3.jpg') }}" alt="">
+			<div class="card text-center"><img class="card-img-top" src="{{ asset('/frontend/templates/images/home/clients-3.jpg') }}" alt="">
 			  <div class="card-body">
 				<p class="card-text">It is what they claim to be, an all in one payment solution. My everyday useful product. Love it</p>
 				<h5>Renie Jess Brown<br /><span> Enterpreneur </span>
@@ -774,13 +774,13 @@
 
 	<!-- Download the app section -->
 	<div class="pt-86 dark-app pb-144 position-relative">
-		<img class="app-dot" src="{{ asset('public/frontend/templates/images/home/dotapp.png') }}">
+		<img class="app-dot" src="{{ asset('/frontend/templates/images/home/dotapp.png') }}">
 		<div class="px-240 position-relative">
 			<div class="bg-app">
 				<div class="row">
 					<div class="col-md-6 order-last order-md-first pay-img">
-						<img class="ml-171 mt-81 desktop-mobile-view" src="{{ asset('public/frontend/templates/images/home/app-img.png') }}">
-						<img class="ml-171 mt-81 app-mobile-view" src="{{ asset('public/frontend/templates/images/home/app-mobile-view.png') }}">
+						<img class="ml-171 mt-81 desktop-mobile-view" src="{{ asset('/frontend/templates/images/home/app-img.png') }}">
+						<img class="ml-171 mt-81 app-mobile-view" src="{{ asset('/frontend/templates/images/home/app-mobile-view.png') }}">
 					</div>
 					<div class="col-md-4 order-first order-md-last">
 						<div class="mt-148">
@@ -789,13 +789,13 @@
 							<p class="small-border mb-0 bgd-blue m-auto"></p>
 						</div>
 						<div class="d-flex mt-56 app-sec">
-							<img class="cursor-pointer app-image" src="{{ asset('public/frontend/templates/images/home/playstore.svg') }}">
-							<img class="cursor-pointer ms-3 ml-r11 app-image" class="ml-3" src="{{ asset('public/frontend/templates/images/home/ios.svg') }}">
+							<img class="cursor-pointer app-image" src="{{ asset('/frontend/templates/images/home/playstore.svg') }}">
+							<img class="cursor-pointer ms-3 ml-r11 app-image" class="ml-3" src="{{ asset('/frontend/templates/images/home/ios.svg') }}">
 						</div>
 					</div>
 				</div>
 			</div>
-			<img class="app-dot-right" src="{{ asset('public/frontend/templates/images/home/app-dot-right.png') }}" alt="">
+			<img class="app-dot-right" src="{{ asset('/frontend/templates/images/home/app-dot-right.png') }}" alt="">
 		</div>
 	</div>
 @endsection

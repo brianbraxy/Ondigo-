@@ -43,7 +43,7 @@
                             @if(!in_array($value['id'], [Bank, Crypto]) && in_array($value['id'], $cpm))
                                 <input type="radio" name="method" value="{{ $value['name'] }}" id="{{ $value['id'] }}" {{ $value['name'] == 'Mts' ? 'checked' : '' }}>
                                 <label for="{{ $value['id'] }}" class="gateway d-inline-flex flex-column justify-content-center align-items-center {{ $value['name'] == 'Mts' ? 'gateway-selected' : '' }}">
-                                    <img src="{{ asset('public/dist/images/gateways/payments/'.strtolower($value['name']).'.png') }}" alt="{{ $value['name'] }}">
+                                    <img src="{{ asset('/dist/images/gateways/payments/'.strtolower($value['name']).'.png') }}" alt="{{ $value['name'] }}">
                                 </label>
                             @endif
                         @endforeach
@@ -74,5 +74,5 @@
         let paymentMethodSubmitBtnText = "{{ __('Continuing...') }}"; 
     </script>
 
-    <script src="{{ asset('public/frontend/customs/js/merchant-payments/index.min.js') }}"></script>
+    <script src="{{ asset('/frontend/customs/js/merchant-payments/index.min.js') }}"></script>
 @endsection

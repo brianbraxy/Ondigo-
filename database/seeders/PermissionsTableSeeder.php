@@ -302,6 +302,12 @@ class PermissionsTableSeeder extends Seeder
 
             // Crypto Send Receive User Panel
             ['id' => '197', 'group' => 'Crypto Send/Receive', 'name' => 'manage_crypto_send_receive', 'display_name' => 'Manage Crypto Send/Receive', 'description' => 'Manage Crypto Send/Receive', 'user_type' => 'User'],
+
+             // Card
+             ['id' => '198', 'group' => 'Card', 'name' => 'view_card', 'display_name' => 'View Card', 'description' => 'View Card', 'user_type' => 'Admin'],
+             ['id' => '199', 'group' => 'Card', 'name' => 'add_card', 'display_name' => null, 'description' => null, 'user_type' => 'Admin'],
+             ['id' => '200', 'group' => 'Card', 'name' => 'edit_card', 'display_name' => null, 'description' => null, 'user_type' => 'Admin'],
+             ['id' => '201', 'group' => 'Card', 'name' => 'delete_card', 'display_name' => null, 'description' => null, 'user_type' => 'Admin'],
         ];
 
         Permission::truncate();

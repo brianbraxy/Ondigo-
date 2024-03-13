@@ -8,7 +8,7 @@ return [
      *
      */
     'welcome'         => [
-        'name'                      => 'Pay Money',
+        'name'                      => 'Ondigo',
         'version'                   => env('APP_VERSION'),
         'title'                     => 'Welcome to the Installer !',
         'message'                   => 'Easy installation and setup wizard',

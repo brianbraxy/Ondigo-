@@ -11,7 +11,7 @@
                             <div class="d-flex justify-content-start">
                                 <div class="logo-div">
                                     <a href="{{ url('/') }}">
-                                        <img src="{{ image(settings('logo'), 'logo') }}" alt="{{ __('Logo') }}">
+                                        <img src="{{ asset("uploads/logos/ondigo.svg") }}" alt="{{ __('Logo') }}">
                                     </a>
                                 </div>
                             </div>
@@ -24,7 +24,7 @@
                             </div>
                             <div class="transaction-image">
                                 <div class="static-image">
-                                    <img class="img img-fluid" src="{{ asset('public/frontend/templates/images/2fa/2fa-img.svg') }}">
+                                    <img class="img img-fluid" src="{{ asset('/frontend/templates/images/2fa/2fa-img.svg') }}">
                                 </div>
                             </div>
                         </div>
@@ -64,8 +64,8 @@
                                         <div class="form-group">
                                             <label class="form-label verification"><span>{{ __('Verification code') }}</span>
                                                 <a href="#" class="btn resend-code">
-                                                    <img src="{{ asset('public/frontend/templates/images/2fa/refresh.svg') }}" alt="refresh" class="img-fluid ref-light">
-                                                    <img src="{{ asset('public/frontend/templates/images/2fa/refresh-dark.svg') }}" alt="refresh" class="img-fluid ref-dark d-none">
+                                                    <img src="{{ asset('/frontend/templates/images/2fa/refresh.svg') }}" alt="refresh" class="img-fluid ref-light">
+                                                    <img src="{{ asset('/frontend/templates/images/2fa/refresh-dark.svg') }}" alt="refresh" class="img-fluid ref-dark d-none">
                                                     <span class="px-1">{{ __('Resend code') }}</span>
                                                 </a>
                                             </label>
@@ -101,7 +101,7 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{ asset('public/dist/libraries/fingerprintjs2/fingerprintjs2.min.js') }}" type="text/javascript">
+    <script src="{{ asset('/dist/libraries/fingerprintjs2/fingerprintjs2.min.js') }}" type="text/javascript">
     </script>
     <script>
         'use strict';
@@ -111,5 +111,5 @@
         var submitBtnText = "{{ __('Submitting...') }}";
         var btnText = "{{ __('Verify') }}";
     </script>
-    <script src="{{ asset('public/user/customs/js/settings.min.js') }}"></script>
+    <script src="{{ asset('/user/customs/js/settings.min.js') }}"></script>
 @endsection

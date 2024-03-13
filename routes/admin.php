@@ -3,10 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 // Unauthenticated Admin
-Route::group(['middleware' => ['no_auth:admin', 'locale', 'ip_middleware']], function ()
-{
-    Route::get('/', function ()
-    {
+Route::group(['middleware' => ['no_auth:admin', 'locale', 'ip_middleware']], function () {
+    Route::get('/', function () {
         return view('admin.auth.login');
     })->name('admin');
 
@@ -18,8 +16,7 @@ Route::group(['middleware' => ['no_auth:admin', 'locale', 'ip_middleware']], fun
 });
 
 // Authenticated Admin
-Route::group(['middleware' => ['guest:admin', 'locale', 'ip_middleware']], function ()
-{
+Route::group(['middleware' => ['guest:admin', 'locale', 'ip_middleware']], function () {
     Route::get('home', 'DashboardController@index')->name('dashboard');
     Route::get('adminlogout', 'AdminController@logout');
     Route::get('profile', 'AdminController@profile');
@@ -138,10 +135,18 @@ Route::group(['middleware' => ['guest:admin', 'locale', 'ip_middleware']], funct
     Route::get('request_payments/pdf', 'RequestPaymentController@requestpaymentPdf');
 
     // Revenues
-    Route::get('revenues', 'RevenueController@revenues_list')->middleware(['permission:view_revenue']);
+    Route::get('revenues', 'RevenueController@revenues_list');
     Route::get('revenues/user_search', 'RevenueController@revenuesUserSearch');
     Route::get('revenues/csv', 'RevenueController@revenueCsv');
     Route::get('revenues/pdf', 'RevenueController@revenuePdf');
+
+    // Cards
+    Route::get('cards', 'CardController@card_list')->middleware(['permission:view_card']);
+    Route::get('cards/user_search', 'CardController@revenuesUserSearch');
+    Route::get('cards/create', 'CardController@create');
+    Route::post('cards/store', 'CardController@store');
+    Route::get('cards/edit/{id}', 'CardController@edit');
+    Route::post('cards/update', 'CardController@update');
 
     // disputes
     Route::get('disputes', 'DisputeController@index')->middleware(['permission:view_disputes']);

@@ -1,7 +1,7 @@
 @extends('user.layouts.app')
 
 @push('css')
-    <link rel="stylesheet" href="{{ asset('public/dist/plugins/intl-tel-input-17.0.19/css/intlTelInput.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/dist/plugins/intl-tel-input-17.0.19/css/intlTelInput.min.css') }}">
 @endpush
 
 @section('content')
@@ -436,10 +436,10 @@
 @endsection
 
 @push('js')
-<script src="{{ asset('public/dist/plugins/html5-validation-1.0.0/validation.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/dist/plugins/intl-tel-input-17.0.19/js/intlTelInput-jquery.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/dist/js/isValidPhoneNumber.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/dist/libraries/sweetalert/sweetalert-unpkg.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/plugins/html5-validation-1.0.0/validation.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/plugins/intl-tel-input-17.0.19/js/intlTelInput-jquery.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/js/isValidPhoneNumber.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/dist/libraries/sweetalert/sweetalert-unpkg.min.js') }}" type="text/javascript"></script>
 <script>
     'use strict';
     var csrfToken = '{{ csrf_token() }}';
@@ -460,6 +460,6 @@
     var updateQrCodeText = "{{ __('Update QR Code') }}";
     var submitButtonText = "{{ __('Submitting...') }}";
 </script>
-<script src="{{ asset('public/user/customs/js/phone.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/user/customs/js/profile.min.js')}}" type="text/javascript"></script>
+<script src="{{ asset('/user/customs/js/phone.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/user/customs/js/profile.min.js')}}" type="text/javascript"></script>
 @endpush
