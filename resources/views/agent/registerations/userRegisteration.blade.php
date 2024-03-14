@@ -1,14 +1,12 @@
 @extends('agent.layouts.app')
 
 @section('content')
-    <link rel="stylesheet" type="text/css"
-        href="{{ asset('/dist/libraries/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/dist/libraries/font-awesome-4.7.0/css/font-awesome.min.css') }}">
     @push('meta-tags')
         <meta name="csrf-token" content="{{ csrf_token() }}">
     @endpush
 
-    <link rel="stylesheet" type="text/css"
-        href="{{ asset('/dist/plugins/intl-tel-input-17.0.19/css/intlTelInput.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/dist/plugins/intl-tel-input-17.0.19/css/intlTelInput.min.css') }}">
 
     <div class="bg-white shadow p-5">
         <p class="mb-0 f-26 gilroy-Semibold text-uppercase text-center text-dark">{{ __('Register New user') }}</p>
@@ -186,10 +184,9 @@
 @endsection
 
 @push('js')
-    <script src="{{ asset('/dist/plugins/html5-validation-1.0.0/validation.min.js') }}" type="text/javascript">
+    <script src="{{ asset('/dist/plugins/html5-validation-1.0.0/validation.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/dist/plugins/intl-tel-input-17.0.19/js/intlTelInput-jquery.min.js') }}" type="text/javascript">
     </script>
-    <script src="{{ asset('/dist/plugins/intl-tel-input-17.0.19/js/intlTelInput-jquery.min.js') }}"
-        type="text/javascript"></script>
     <script src="{{ asset('/dist/js/isValidPhoneNumber.min.js') }}" type="text/javascript"></script>
     <script>
         'use strict';
@@ -388,6 +385,8 @@
 
 
             $("#otp_btn").on("click", function(e) {
+                console.log($("#phone").intlTelInput("isValidNumber"))
+                $(this).html("sending...")
                 e.preventDefault()
                 let inputValue = $('input[name="formattedPhone"]').val()
                 $.ajaxSetup({
@@ -402,9 +401,11 @@
                         number: inputValue
                     },
                     success: function(response) {
+                        $("#otp_btn").html("send OTP")
                         console.log('Success:', response);
                     },
                     error: function(xhr, status, error) {
+                        $("#otp_btn").html("send OTP")
                         console.error('Error:', error);
                     }
                 })

@@ -250,7 +250,8 @@ class AgentController
       $hashed = hash_hmac('sha256', $number, "1234");
       $result = substr(preg_replace("/[^0-9]/", "", $hashed), -4);
       // dd($result);
-      sendSMSwithSendChamp($number, $result);
+      $message = "Your One Time Password(OTP) for ONDIGO log-in is " . $result . " . Expires in 10mins. If you did not initiate this request kindly call us. Do not share your OTP with anyone.";
+      sendSMSwithSendChamp($number, $message);
       //send the result as sms
       return response()->json(["success" => "otp sent successfully"], 200);
     } catch (Exception $e) {
