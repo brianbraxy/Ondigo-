@@ -175,5 +175,5 @@
     var defaultImageUrl = '{{ url("public/uploads/userPic/default-image.png") }}';
     var selectedAllowedWallets = '{{ $selectedAllowedWallets }}';
   </script>
-  <script src="{{ asset('/admin/customs/js/settings/general/settings.min.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('/asset/admin/customs/js/settings/general/settings.min.js') }}" type="text/javascript"></script>
 @endpush

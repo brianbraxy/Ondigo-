@@ -77,5 +77,5 @@
     var site_url = '{{ url('/') }}';
     var submitText = '{{ __('Submitting..') }}'
     </script>
-    <script src="{{ asset('/admin/customs/js/settings/admin_security/admin_security.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/asset/admin/customs/js/settings/admin_security/admin_security.min.js') }}" type="text/javascript"></script>
 @endpush

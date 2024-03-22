@@ -25,8 +25,8 @@ $logo = settings('logo');
     <link rel="stylesheet" type="text/css" href="{{ asset('/dist/libraries/font-awesome-4.7.0/css/font-awesome.min.css')}}">
 
     <!-- Theme style -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('/admin/templates/adminLte/AdminLTE.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/admin/templates/css/style.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/asset/admin/templates/adminLte/AdminLTE.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/asset/admin/templates/css/style.min.css') }}">
     <link rel="shortcut icon" href="{{ faviconPath() }}" />
 
 </head>

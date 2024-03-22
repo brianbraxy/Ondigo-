@@ -47,7 +47,7 @@
           <input type="file" name="attachment" accept=".zip,.rar,.7zip" required>
           <div>
             <small class="form-text text-muted d-block">
-              <strong>* {!! __('Script :x folder permission should be :y', ['x' => '<a class="link-parent" href="'. asset('/admin/customs/images/module_permission.png') .'" target="_blank"><u>'. __('Modules') .'</u> <i class="fa fa-external-link-square" aria-hidden="true"></i></a>', 'y' => '0775' ]) !!}</strong>
+              <strong>* {!! __('Script :x folder permission should be :y', ['x' => '<a class="link-parent" href="'. asset('/asset/admin/customs/images/module_permission.png') .'" target="_blank"><u>'. __('Modules') .'</u> <i class="fa fa-external-link-square" aria-hidden="true"></i></a>', 'y' => '0775' ]) !!}</strong>
             </small>
             <small class="form-text text-muted">
               <strong>* {!! __('Max :x should be minimum of :y', ['x' => '<a class="link-parent" target="_blank" href="https://docs.paymoney.techvill.net/how-to-increase-the-php-max-upload-size/"><u>'.__('Upload & Post size').'</u> <i class="fa fa-external-link-square" aria-hidden="true"></i></a>', 'y' => __('10MB')]) !!}</strong>

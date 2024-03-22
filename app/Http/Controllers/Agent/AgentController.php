@@ -6,10 +6,13 @@ use App\Services\SafeHaven\SafeHavenApiService;
 use Exception, DB, Validator;
 use Illuminate\Http\Request;
 use App\Http\Helpers\Common;
+use Carbon\Carbon;
+use Illuminate\Support\Str;
 use App\Models\{
   AgentRegisteration,
   VehicleDetails,
   UserDetail,
+  DateTime,
   RoleUser,
   User,
   Bank,
@@ -42,7 +45,11 @@ class AgentController
 
   public function newUser()
   {
-    return view("agent.registerations.userRegisteration");
+    $OTPTimestamp = session('userRegisterationOTP')['timestamp'];
+    if ($OTPTimestamp instanceof DateTime || $OTPTimestamp instanceof \Carbon\Carbon) {
+      $isoDate = $OTPTimestamp->toISOString();
+    }
+    return view("agent.registerations.userRegisteration")->with('isoDate', $isoDate);
   }
 
   public function storeUser(Request $request)
@@ -68,25 +75,32 @@ class AgentController
     $validator = Validator::make($request->all(), $rules);
     $validator->setAttributeNames($fieldNames);
 
-    $otp = $request->otp;
-    $number = $request->formattedPhone;
-    $hashed = hash_hmac('sha256', $number, "1234");
-    $result = substr(preg_replace("/[^0-9]/", "", $hashed), -4);
-    if ($result !== $otp) {
-      return back()->error("error");
+    $data = session('userRegisterationOTP');
+    if ($data['attempt'] >= 3) {
+      $validator->errors()->add('otp', 'otp invalid');
+      throw new \Illuminate\Validation\ValidationException($validator);
+    }
+    session(['attempt' => $data['attempt']++]);
+    if (Carbon::now()->diffInMinutes(Carbon::parse($data['timestamp'])) > 10) {
+      $validator->errors()->add('otp', 'otp invalid');
+      throw new \Illuminate\Validation\ValidationException($validator);
+    }
+    if ($request->otp !== $data['code']) {
+      $validator->errors()->add('otp', 'otp invalid');
+      throw new \Illuminate\Validation\ValidationException($validator);
     }
 
 
     if ($validator->fails()) {
-      dd($validator->messages());
-      return redirect('register')->withErrors($validator)->withInput();
+      return redirect()->back()->withErrors($validator)->withInput();
     } else {
       try {
 
         DB::beginTransaction();
 
         // Create user
-        $request->merge(["email" => $request->first_name . "_" . $request->last_name . "@ondigo-ng.com"]);
+        $request->merge(["email" => $request->first_name . "_" . $request->last_name . rand(10000, 99999) . "@ondigo-ng.com"]);
+        $request->merge(['temp_password' => Str::random(8)]);
         $user = $this->user->createNewUser($request, 'user');
 
         RoleUser::insert(['user_id' => $user->id, 'role_id' => $user->role_id, 'user_type' => 'User']);
@@ -108,8 +122,11 @@ class AgentController
           $bank->account_number = $safeHavenBank->data->accountNumber;
           $bank->save();
         }
-
+        
         DB::commit();
+        $message = "Welcome to ONDIGO. Your ondigo banking credientials are: Bank name:SAFE HAVEN MFB ,Account number:" . $safeHavenBank->data->accountNumber . ", Account name:" . $safeHavenBank->data->accountName . ", One time login password:" . $request->temp_password . ", Do not disclose this password to anyone";
+        sendSMSwithSendChamp($user->formattedPhone, $message);
+        
         $this->helper->one_time_message('success', __('Registration Successful!'));
         return redirect()->back();
       } catch (Exception $e) {
@@ -247,13 +264,19 @@ class AgentController
   {
     try {
       $number = $request->number;
-      $hashed = hash_hmac('sha256', $number, "1234");
-      $result = substr(preg_replace("/[^0-9]/", "", $hashed), -4);
+      $hashed = hash_hmac('sha256', $number + time(), "1234");
+      $code = substr(preg_replace("/[^0-9]/", "", $hashed), -4);
+      $time = Carbon::now();
+      session(['userRegisterationOTP' => [
+        'code' => $code,
+        'timestamp' => $time,
+        'attempt' => 0
+      ]]);
       // dd($result);
-      $message = "Your One Time Password(OTP) for ONDIGO log-in is " . $result . " . Expires in 10mins. If you did not initiate this request kindly call us. Do not share your OTP with anyone.";
+      $message = "Your One Time Password(OTP) for ONDIGO log-in is " . $code . " . Expires in 10mins. If you did not initiate this request kindly call us. Do not share your OTP with anyone.";
       sendSMSwithSendChamp($number, $message);
       //send the result as sms
-      return response()->json(["success" => "otp sent successfully"], 200);
+      return response()->json(["success" => "otp sent successfully", 'isoDate' => $time->toISOString()], 200);
     } catch (Exception $e) {
       return response()->json(['failed' => "failed"]);
     }
@@ -262,10 +285,15 @@ class AgentController
   public function verifyUserOTP(Request $request)
   {
     $otp = $request->otp;
-    $number = $request->number;
-    $hashed = hash_hmac('sha256', $number, "1234");
-    $result = substr(preg_replace("/[^0-9]/", "", $hashed), -4);
-    if ($result === $otp) {
+    $data = session('userRegisterationOTP');
+    if ($data['attempt'] >= 3) {
+      return response()->json(["success" => "invalid OTP, please generate a new OTP"], 400);
+    }
+    session(['attempt' => $data['attempt']++]);
+    if (Carbon::now()->diffInMinutes(Carbon::parse($data['timestamp'])) > 10) {
+      return response()->json(["success" => "invalid OTP, please generate a new OTP"], 400);
+    }
+    if ($otp === $data['code']) {
       return response()->json(["success" => "otp verified"], 200);
     }
     return response()->json(["success" => "otp not verified"], 400);

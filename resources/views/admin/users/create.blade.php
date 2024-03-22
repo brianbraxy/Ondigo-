@@ -141,7 +141,7 @@
     var utilsScriptLoadingPath = '{{ asset("public/dist/plugins/intl-tel-input-17.0.19/js/utils.min.js") }}';
     var validPhoneNumberErrorText = '{{ __("Please enter a valid international phone number.") }}';
 </script>
-<script src="{{ asset('/admin/customs/js/user/user.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/asset/admin/customs/js/user/user.min.js') }}" type="text/javascript"></script>
 @endpush
 
 

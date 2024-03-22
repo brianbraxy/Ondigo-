@@ -217,5 +217,5 @@
 	var submittingText = '{{ __("Submitting...") }}';
 	var statusChangeText = '{{ __("Dispute discussion :x successfully done.") }}'
 </script>
-<script src="{{ asset('/admin/customs/js/dispute/dispute.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/asset/admin/customs/js/dispute/dispute.min.js') }}" type="text/javascript"></script>
 @endpush

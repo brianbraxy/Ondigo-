@@ -6,12 +6,12 @@
 <!-- moment -->
 <script src="{{ asset('/dist/js/moment.min.js') }}" type="text/javascript"></script>
 <!-- AdminLTE App -->
-<script src="{{ asset('/admin/templates/js/app.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/asset/admin/templates/js/app.min.js') }}" type="text/javascript"></script>
 
 <script type="text/javascript">
     "use strict";
     var url = "{{ url('change-lang') }}";
     var token = "{{ csrf_token() }}";
  </script>
-<script src="{{ asset('/admin/customs/js/body_script.min.js') }}"></script>
+<script src="{{ asset('/asset/admin/customs/js/body_script.min.js') }}"></script>
 @yield('body_script')

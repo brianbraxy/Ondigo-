@@ -82,6 +82,6 @@
 	let extensionsValidationMessage = errorMessage.replace(':x', extensionsValidation);
     let defaultImageSource = '{{ url("public/uploads/userPic/default-image.png") }}';
 </script>
-<script src="{{ asset('/admin/customs/js/admin_profile/admin_profile.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/asset/admin/customs/js/admin_profile/admin_profile.min.js') }}" type="text/javascript"></script>
 @endpush
 

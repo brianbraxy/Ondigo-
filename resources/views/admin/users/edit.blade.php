@@ -191,5 +191,5 @@
     var passwordMatchErrorText = '{{ __("Please enter same value as the password field.") }}';
     var updatingText = '{{ __("Updating...") }}';
 </script>
-<script src="{{ asset('/admin/customs/js/user/user.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/asset/admin/customs/js/user/user.min.js') }}" type="text/javascript"></script>
 @endpush

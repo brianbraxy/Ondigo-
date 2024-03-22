@@ -3,7 +3,7 @@
 
 @section('head_style')
   <!-- custom-checkbox -->
-  <link rel="stylesheet" type="text/css" href="{{ asset('/admin/customs/css/custom-checkbox.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('/asset/admin/customs/css/custom-checkbox.min.css') }}">
 
    <!-- sweetalert -->
   <link rel="stylesheet" type="text/css" href="{{ asset('/dist/libraries/sweetalert/sweetalert.min.css')}}">

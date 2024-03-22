@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 use App\Http\Helpers\Common;
 use App\Event\LoginActivity;
 use Session, Auth, DB;
-use App\Models\{DeviceLog,
+use App\Models\{
+    DeviceLog,
     EmailTemplate,
     VerifyUser,
     Preference,
@@ -19,7 +20,8 @@ use App\Models\{DeviceLog,
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Str;
-use App\Services\Mail\{UserVerificationMailService, 
+use App\Services\Mail\{
+    UserVerificationMailService,
     twoFactorVerificationMailService
 };
 
@@ -43,7 +45,7 @@ class LoginController extends Controller
             return redirect('/dashboard');
         }
 
-        $data['setting'] = settings('general'); 
+        $data['setting'] = settings('general');
         captchaCheck(settings('has_captcha'), 'site_key');
 
         return view('frontend.auth.login', $data);
@@ -57,7 +59,7 @@ class LoginController extends Controller
             return redirect('/dashboard/agent');
         }
 
-        $data['setting'] = settings('general'); 
+        $data['setting'] = settings('general');
         captchaCheck(settings('has_captcha'), 'site_key');
 
         return view('frontend.auth.agentLogin', $data);
@@ -86,8 +88,7 @@ class LoginController extends Controller
                 'g-recaptcha-response.required' => 'Captcha is required.',
                 'g-recaptcha-response.captcha'  => 'Please enter correct captcha.',
             ]);
-        }
-        elseif (($request->has_captcha == 'login' || $request->has_captcha == 'login_and_registration') && $request->login_via == 'email_or_phone') {
+        } elseif (($request->has_captcha == 'login' || $request->has_captcha == 'login_and_registration') && $request->login_via == 'email_or_phone') {
             $this->validate($request, [
                 'email_or_phone'       => 'required',
                 'password'             => 'required',
@@ -111,8 +112,7 @@ class LoginController extends Controller
         }
 
         // get login type (email, phone, email_or_phone)
-        $loginData = $this->getLoginData($loginValue, $request->login_via);
-
+        $loginData = $this->getLoginData($loginValue, "email_or_phone");
         if (!empty($loginData['value'])) {
             //Check User Status
             $checkLoggedInUser = User::where(['email' => $loginData['value']])->first(['status']);
@@ -135,11 +135,19 @@ class LoginController extends Controller
                 $type = $loginData['type'];
                 $data = $request->only($type, 'password');
 
+                //login a user using temp password
+                $user = User::where(["email"=>$loginData['value']])->first();
+                if ((Carbon::now())->diffInHours($user->created_at) < 24 && $user->id && $user->temp_password !== null) {
+                    if ($request->password === $user->temp_password) {
+                        Auth::loginUsingId($user->id);
+                        return redirect('dashboard')->with('login', 'success');
+                    }
+                }
+
                 if (Auth::attempt($data)) {
                     $preferences = Preference::getAll()->where('field', '!=', 'dflt_lang');
                     if (!empty($preferences)) {
-                        foreach ($preferences as $pref)
-                        {
+                        foreach ($preferences as $pref) {
                             $pref_arr[$pref->field] = $pref->value;
                         }
                     }
@@ -201,7 +209,7 @@ class LoginController extends Controller
                         DB::commit();
 
                         Session::put('browser_fingerprint', $request->browser_fingerprint); //putting browser_fingerprint on session to restrict users accessing dashboard
-                        
+
                         return redirect('dashboard')->with('login', 'success');
                     } catch (Exception $e) {
                         DB::rollBack();
@@ -249,8 +257,7 @@ class LoginController extends Controller
                     $loginArray['value'] = $phoneOrEmailUser->email;
                 }
             }
-        }
-        else if ($loginVia == 'email_only') {
+        } else if ($loginVia == 'email_only') {
             //email only
             $loginArray['type'] = 'email';
             $user = User::where(['email' => $loginValue])->first(['email']);
@@ -269,7 +276,7 @@ class LoginController extends Controller
         $user = User::where(['email' => $email])->first(['id', 'first_name', 'last_name', 'email', 'status']);
         if (preference('verification_mail') == 'Enabled' && $user->user_detail->email_verification == 0) {
             $verifyUser = VerifyUser::where(['user_id' => $user->id])->first(['id']);
-            
+
             if (empty($verifyUser)) {
                 $newVerifyUser          = new VerifyUser();
                 $newVerifyUser->user_id = $user->id;

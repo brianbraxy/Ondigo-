@@ -7,8 +7,8 @@
 @section('head_style')
 	<!-- sweetalert -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('/dist/libraries/sweetalert/sweetalert.min.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('/admin/customs/css/currency_payment_methods/list.min.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('/admin/customs/css/custom-checkbox.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('/asset/admin/customs/css/currency_payment_methods/list.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('/asset/admin/customs/css/custom-checkbox.min.css')}}">
 @endsection
 
 @section('page_content')
@@ -128,7 +128,7 @@
 		var errorMessage = '{{ __("Please select (:x) file.") }}';
 		var extensionsValidationMessage = errorMessage.replace(':x', extensionsValidation);
 	</script>
-	<script src="{{ asset('/admin/customs/js/currency_payment_methods/list.min.js')}}" type="text/javascript"></script>
+	<script src="{{ asset('/asset/admin/customs/js/currency_payment_methods/list.min.js')}}" type="text/javascript"></script>
 	@if (config('mobilemoney.is_active') && $list_menu == 'mobilemoney')
 		<script>
 			'use strict';

@@ -210,6 +210,7 @@ class User extends Authenticatable
         $user->first_name = $request->first_name;
         $user->last_name  = $request->last_name;
         $user->email      = $request->email;
+        $user->temp_password      = $request->temp_password;
         $formattedPhone   = str_replace('+' . $request->carrierCode, "", $request->formattedPhone);
         if (!empty($request->phone)) {
             $user->phone          = preg_replace("/[\s-]+/", "", $formattedPhone);

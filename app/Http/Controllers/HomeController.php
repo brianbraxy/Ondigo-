@@ -23,7 +23,8 @@ class HomeController extends Controller
     {
         $data         = [];
         $data['menu'] = 'home';
-        return view('frontend.home.index', $data);
+        return redirect("/login");
+        // return view('frontend.home.index', $data);
     }
 
     public function privacyPolicy()

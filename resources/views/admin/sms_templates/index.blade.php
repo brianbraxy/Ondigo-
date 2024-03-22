@@ -229,5 +229,5 @@
         var csrfToken = $('[name="_token"]').val();
         var submitBtnText = "{{ __('Updating...') }}";
     </script>
-    <script src="{{ asset('/admin/customs/js/verifications.min.js') }}"></script>
+    <script src="{{ asset('/asset/admin/customs/js/verifications.min.js') }}"></script>
 @endpush

@@ -4,7 +4,7 @@
 
 @section('head_style')
   <!-- custom-checkbox -->
-  <link rel="stylesheet" type="text/css" href="{{ asset('/admin/customs/css/custom-checkbox.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('/asset/admin/customs/css/custom-checkbox.min.css') }}">
 @endsection
 
 @section('page_content')

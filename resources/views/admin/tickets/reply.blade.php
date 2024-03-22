@@ -284,7 +284,7 @@
     var fileErrorMessage = errorMessage.replace(':x', extensionsMessage);
     var ticketStatusChangeUrl = "{{ url(config('adminPrefix').'/tickets/change_ticket_status') }}";
 </script>
-<script src="{{ asset('/admin/customs/js/ticket/ticket.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/asset/admin/customs/js/ticket/ticket.min.js') }}" type="text/javascript"></script>
 
 @endpush
 

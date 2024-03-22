@@ -496,23 +496,27 @@ function sendSMSwithTwilio($twilioCredentials, $to, $message)
 
 function sendSMSwithSendChamp($to, $message)
 {
-    $url = "https://api.sendchamp.com/api/v1/sms/send";
-    $body = [
-        "to" => $to,
-        "message" =>  $message,
-        "sender_name" =>  "Sendchamp",
-        "route" =>  "dnd"
-    ];
-    $headers = [
-        'Authorization' => 'Bearer sendchamp_live_$2a$10$L4dkAJFX.5Ye18acBfJkzOHeJSVX8Y5Kg6T1K06bjFrNfNlhkT.hW',
-        'accept' => 'application/json',
-        'content-type' => 'application/json',
-    ];
-    $response = Http::withHeaders($headers)->post(
-        $url,
-        $body
-    );
-    return $response;
+    try{
+        $url = "https://api.sendchamp.com/api/v1/sms/send";
+        $body = [
+            "to" => $to,
+            "message" =>  $message,
+            "sender_name" =>  "Sendchamp",
+            "route" =>  "dnd"
+        ];
+        $headers = [
+            'Authorization' => 'Bearer sendchamp_live_$2a$10$L4dkAJFX.5Ye18acBfJkzOHeJSVX8Y5Kg6T1K06bjFrNfNlhkT.hW',
+            'accept' => 'application/json',
+            'content-type' => 'application/json',
+        ];
+        $response = Http::withHeaders($headers)->post(
+            $url,
+            $body
+        );
+        return $response;
+    }catch (Exception $e) {
+        dd($e->getMessage());
+    }
 }
 
 function sendSMS($to, $message)

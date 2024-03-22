@@ -74,7 +74,8 @@
                         <label class="gilroy-medium text-gray-100 mb-2 f-15 mt-4 r-mt-amount">{{ __('Phone') }}</label>
                     </div>
                     <div class="col-7">
-                        <input type="tel" class="form-control" id="phone" name="phone">
+                        <input type="tel" class="form-control" id="phone" name="phone"
+                            data-value-missing="{{ __('This field is required.') }}">
                         <span id="duplicate-phone-error"></span>
                         <span id="tel-error"></span>
                         @error('phone')
@@ -82,7 +83,7 @@
                         @enderror
                     </div>
                     <div class="col-2 d-flex align-items-center pl-0" style="padding-left: 0">
-                        <a href="#" class="btn btn-success btn-sm" id="otp_btn"
+                        <a href="#" class="btn btn-success btn-sm disabled" id="otp_btn"
                             style="margin-top: 0 !important;
                         padding: 0.25rem 0.5rem !important;
                         font-size: 12px !important;">Send
@@ -124,14 +125,13 @@
                     <div class="col-9">
                         <div class="otp-container">
                             <!-- Six input fields for OTP digits -->
-                            <input type="text" class="card-input" pattern="\d" maxlength="4">
-                            <input type="text" class="card-input" pattern="\d" maxlength="4" disabled>
-                            <input type="text" class="card-input" pattern="\d" maxlength="4" disabled>
-                            <input type="text" class="card-input" pattern="\d" maxlength="4" disabled>
+                            <input type="text" class="card-input" pattern="\d{4}" maxlength="4">
+                            <input type="text" class="card-input" pattern="\d{4}" maxlength="4" disabled>
+                            <input type="text" class="card-input" pattern="\d{4}" maxlength="4" disabled>
+                            <input type="text" class="card-input" pattern="\d{4}" maxlength="4" disabled>
+                            <input type="hidden" id="card_uuid" class="form-control input-form-control apply-bg"
+                                name="card_uuid" required>
                         </div>
-                        {{-- <input type="text" class="form-control input-form-control apply-bg" name="surname"
-                            id="subject" value="{{ old('otp') }}" placeholder="{{ __('Enter Surname') }}" required
-                            data-value-missing="{{ __('This field is required.') }}"> --}}
                         @error('otp')
                             <div class="error">{{ $message }}</div>
                         @enderror
@@ -261,6 +261,7 @@
                 inputs.forEach(function(input, index) {
                     input.addEventListener("paste", function(ev) {
                         var clip = ev.clipboardData.getData('text').trim();
+                        console.log(/^\d{4}$/.test(clip))
                         if (!/^\d{4}$/.test(clip)) {
                             ev.preventDefault();
                             return;
@@ -274,24 +275,26 @@
                         enableNextBox(inputs[0], 0);
                         inputs[5].removeAttribute("disabled");
                         inputs[5].focus();
-                        updateOTPValue(inputs);
+                        updateCardUUIDValue(inputs);
                     });
 
                     input.addEventListener("input", function() {
                         var currentIndex = Array.from(inputs).indexOf(this);
                         var inputValue = this.value.trim();
 
-                        if (inputValue.length === 4 && currentIndex < 5) {
-                            inputs[currentIndex + 1].removeAttribute("disabled");
-                            inputs[currentIndex + 1].focus();
+                        if (inputValue.length === 4 && currentIndex < 4) {
+                            if (!(currentIndex + 1 > 3)) {
+                                inputs[currentIndex + 1].removeAttribute("disabled");
+                                inputs[currentIndex + 1].focus();
+                            }
                         }
 
-                        if (currentIndex === 4 && inputValue) {
-                            inputs[5].removeAttribute("disabled");
-                            inputs[5].focus();
-                        }
-
-                        updateOTPValue(inputs);
+                        // if (currentIndex === 4 && inputValue) {
+                        //     inputs[5].removeAttribute("disabled");
+                        //     inputs[5].focus();
+                        // }
+                        console.log(currentIndex)
+                        updateCardUUIDValue(inputs);
                     });
 
                     input.addEventListener("keydown", function(ev) {
@@ -331,13 +334,19 @@
                 }
             }
 
+            function updateCardUUIDValue(inputs) {
+                var otpValue = "";
+
+                inputs.forEach(function(input) {
+                    otpValue += input.value;
+                });
+
+                if (inputs === otpInputs) {
+                    document.getElementById("card_uuid").value = otpValue;
+                }
+            }
+
             function verifyOtp() {
-                // <
-                // small class = "f-12 text-danger" > < i class = "fa fa-spinner"
-                // aria - hidden = "true" > < /i>
-                // verifing
-                //     <
-                //     /small>
                 $("#otp_status").addClass("d-flex").children().first().html("<i></i> verifying").children().first()
                     .addClass("fa").addClass("fa-spinner").addClass("fa-spin")
                 let number = $('input[name="formattedPhone"]').val()
@@ -355,13 +364,15 @@
                         otp
                     },
                     success: function(response) {
-                        $("#otp_status").children().first().addClass("text-success").html(
+                        $("#otp_status").children().first().removeClass("text-danger").addClass(
+                                "text-success").html(
                                 "<i></i> verified")
                             .children().first().addClass("fa").addClass("fa-times-circle")
                         console.log('Success:', response);
                     },
                     error: function(xhr, status, error) {
-                        $("#otp_status").children().first().addClass("text-danger").html(
+                        $("#otp_status").children().first().removeClass('text-success').addClass(
+                                "text-danger").html(
                                 "<i></i> failed")
                             .children().first().addClass("fa").addClass("fa-times-circle")
                         console.error('Error:', error);
@@ -384,8 +395,42 @@
             // });
 
 
+            function OTPRetryTimer(retryTimer) {
+                var retryTime = new Date(retryTimer)
+                retryTime.setMinutes(retryTime.getMinutes() + 10)
+                var targetTime = new Date(retryTime).getTime()
+                var min = 0
+
+                var timer = setInterval(() => {
+                    var now = new Date().getTime()
+                    var distance = targetTime - now
+                    var min = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+                    var sec = Math.floor((distance % (1000 * 60)) / 1000)
+                    if (min <= 0) {
+                        $("#otp_btn").removeClass("disabled")
+                        $("#otp_btn").html("send OTP")
+                        clearInterval(timer)
+                    } else {
+                        $("#otp_btn").html(`retry in ${min}:${sec}`)
+                    }
+                }, 1000);
+            }
+            OTPRetryTimer("{!! $isoDate !!}")
+
             $("#otp_btn").on("click", function(e) {
-                console.log($("#phone").intlTelInput("isValidNumber"))
+                var input = $("#phone")
+                if (!input.intlTelInput("isValidNumber")) {
+                    var p = input[0].parentNode
+                    var err = document.createElement('label');
+                    if (p.getElementsByClassName('error').length) {
+                        p.getElementsByClassName('error')[0].remove()
+                    }
+                    err.classList.add("error")
+                    input[0].setCustomValidity('This field is required.')
+                    err.innerHTML = input[0].getAttribute('data-value-missing');
+                    p.append(err);
+                    return
+                }
                 $(this).html("sending...")
                 e.preventDefault()
                 let inputValue = $('input[name="formattedPhone"]').val()
@@ -401,12 +446,11 @@
                         number: inputValue
                     },
                     success: function(response) {
-                        $("#otp_btn").html("send OTP")
-                        console.log('Success:', response);
+                        OTPRetryTimer(response.isoDate)
+                        $("#otp_btn").removeClass("disabled")
                     },
                     error: function(xhr, status, error) {
                         $("#otp_btn").html("send OTP")
-                        console.error('Error:', error);
                     }
                 })
             })

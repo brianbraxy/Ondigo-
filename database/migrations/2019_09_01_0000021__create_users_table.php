@@ -33,6 +33,7 @@ class CreateUsersTable extends Migration
             $table->string('carrierCode', 6)->nullable()->default(null);
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('temp_password');
             $table->string('phrase')->nullable()->default(null);
             $table->boolean('address_verified')->default(false);
             $table->boolean('identity_verified')->default(false);
