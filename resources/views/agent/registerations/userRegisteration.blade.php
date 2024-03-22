@@ -415,7 +415,10 @@
                     }
                 }, 1000);
             }
-            OTPRetryTimer("{!! $isoDate !!}")
+            var OTPtimer = "{!! $isoDate !!}"
+            if(!!OTPtimer){
+                OTPRetryTimer(OTPtimer)
+            }
 
             $("#otp_btn").on("click", function(e) {
                 var input = $("#phone")

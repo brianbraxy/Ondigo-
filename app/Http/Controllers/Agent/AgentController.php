@@ -45,7 +45,11 @@ class AgentController
 
   public function newUser()
   {
-    $OTPTimestamp = session('userRegisterationOTP')['timestamp'];
+    $OTPTimestamp = null;
+    $isoDate = null;
+    if (session('userRegisterationOTP') !== null) {
+      $OTPTimestamp = session('userRegisterationOTP')['timestamp'];
+    }
     if ($OTPTimestamp instanceof DateTime || $OTPTimestamp instanceof \Carbon\Carbon) {
       $isoDate = $OTPTimestamp->toISOString();
     }
@@ -122,11 +126,11 @@ class AgentController
           $bank->account_number = $safeHavenBank->data->accountNumber;
           $bank->save();
         }
-        
+
         DB::commit();
         $message = "Welcome to ONDIGO. Your ondigo banking credientials are: Bank name:SAFE HAVEN MFB ,Account number:" . $safeHavenBank->data->accountNumber . ", Account name:" . $safeHavenBank->data->accountName . ", One time login password:" . $request->temp_password . ", Do not disclose this password to anyone";
         sendSMSwithSendChamp($user->formattedPhone, $message);
-        
+
         $this->helper->one_time_message('success', __('Registration Successful!'));
         return redirect()->back();
       } catch (Exception $e) {
