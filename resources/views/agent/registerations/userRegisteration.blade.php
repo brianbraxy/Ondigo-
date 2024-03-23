@@ -396,6 +396,10 @@
 
 
             function OTPRetryTimer(retryTimer) {
+                if (!retryTimer) {
+                    $("#otp_btn").removeClass("disabled")
+                    return
+                }
                 var retryTime = new Date(retryTimer)
                 retryTime.setMinutes(retryTime.getMinutes() + 10)
                 var targetTime = new Date(retryTime).getTime()
@@ -415,10 +419,7 @@
                     }
                 }, 1000);
             }
-            var OTPtimer = "{!! $isoDate !!}"
-            if(!!OTPtimer){
-                OTPRetryTimer(OTPtimer)
-            }
+            OTPRetryTimer("{!! $isoDate !!}")
 
             $("#otp_btn").on("click", function(e) {
                 var input = $("#phone")
