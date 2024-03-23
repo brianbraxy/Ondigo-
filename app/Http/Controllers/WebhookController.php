@@ -57,8 +57,8 @@ class WebhookController extends Controller
 
       return response()->json(['message' => 'Success'], 200);
     } catch (Exception $e) {
-      //webhook must always return 200
       // return response()->json(['message' => $e->getMessage(), 'line' => $e->getLine()], 200);
+      //webhook must always return 200
       return response()->json(['message' => 'Success'], 200);
     }
   }
